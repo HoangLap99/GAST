@@ -173,7 +173,7 @@ namespace TeamplateHotel.Controllers
                     article.MenuAlias = article.Menu.Alias;
                 }
                 int pageNumber = (page ?? 1);
-                int pageSize = 1;
+                int pageSize = 9;
                 return articles.ToPagedList(pageNumber, pageSize);
             }
         }

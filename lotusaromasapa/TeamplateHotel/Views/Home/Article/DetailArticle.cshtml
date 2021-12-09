@@ -5,6 +5,7 @@
 @model TeamplateHotel.Models.DetailArticle
 @{
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Detail = true;
     Menu menu = ViewBag.Menu ?? new Menu();
     Hotel detailHotel = CommentController.DetailHotel(Request.Cookies["LanguageID"].Value);
     var tags = CommentController.GetArticleTags(Model.Article.ID);
@@ -14,6 +15,79 @@
     <link href="~/Content/css/news/news-detail.css" rel="stylesheet" />
     <link href="~/Content/css/responsive.css" rel="stylesheet" />
 }
+<header>
+    <form class="header-booking d-none d-xl-block" action="https://booking-guarantee.com/Home/SelectRoom?" methods="Get" id="formCheckRoom" target="blank" name="idForm">
+        <input name="hotelKey" type="hidden" value="ABS">
+        <input name="hotelCode" type="hidden" value="ABS">
+        <input name="lang" type="hidden" value="en">
+        <input name="currency" type="hidden" value="USD">
+        <div class="header-booking__item">
+            <span>
+                <input type="text"
+                       autocomplete="off"
+                       name="fromDate"
+                       value=""
+                       id="current-date"
+                       placeholder="Check-in" />
+            </span>
+        </div>
+        <div class="header-booking__item">
+            <span>
+                <input type="text"
+                       autocomplete="off"
+                       name="toDate"
+                       value=""
+                       id="current-date"
+                       placeholder="Check-out" />
+            </span>
+        </div>
+        <div class="header-booking__item">
+            <div class="header-booking__select">
+                <select name="adults">
+                    <option value="0">Adults</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+        <div class="header-booking__item">
+            <div class="header-booking__select">
+                <select name="child">
+                    <option value="0">Children</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+        <div class="header-booking__item">
+            <button id="cmdCheckHotel" type="submit">CHECK AVAILABILITY</button>
+        </div>
+    </form>
+    @Html.Partial("Menu/MainMenus")
+
+
+
+    <section class="news-banner">
+        <div class="news-banner__group">
+            <div class="parallax">
+                <div class="parallax-bg"></div>
+            </div>
+            <div class="news-banner__title">
+                <h4>@Model.Article.ArticleType</h4>
+                <p>@Model.Article.Title</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+</header>
 <main>
     <div class="container">
         <div class="news-detail">
@@ -39,12 +113,12 @@
             <img src="@Model.Article.Image" alt="news detail image" />
             @Html.Raw(Model.Article.Description)
             @Html.Raw(Model.Article.Content)
-           
+
         </div>
         <div class="news-tag">
             <p>
 
-                <strong>Tags:</strong>  
+                <strong>Tags:</strong>
                 @if (tags.Count != 0)
                 {
                     foreach (var tag in tags.Select((value, index) => new { Value = value, Index = index }))
@@ -64,31 +138,31 @@
                 }
             </p>
         </div>
-        
+
         <div class="news-related">
             <h1>RELATED STORIES</h1>
             <div class="row">
                 @foreach (var item in Model.Articles.Take(3))
                 {
-                <div class="col-12 col-md-4 padding">
-                    <div class="articles__item">
-                        <a href="/@item.MenuAlias/@item.ID/@item.Alias">
-                            <img src="@item.Image" alt="articles" />
-                        </a>
-                        <div class="articles__bg"></div>
-                        <div class="articles__desc">
-                            <div class="articles__group">
-                                <span>@item.Createdate</span>
-                                <a href="/@item.MenuAlias/@item.ID/@item.Alias">
-                                    <h2>
-                                        @item.Title
-                                    </h2>
-                                </a>
+                    <div class="col-12 col-md-4 padding">
+                        <div class="articles__item">
+                            <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                                <img src="@item.Image" alt="articles" />
+                            </a>
+                            <div class="articles__bg"></div>
+                            <div class="articles__desc">
+                                <div class="articles__group">
+                                    <span>@item.Createdate</span>
+                                    <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                                        <h2>
+                                            @item.Title
+                                        </h2>
+                                    </a>
+                                </div>
+                                <a href="/@item.MenuAlias/@item.ID/@item.Alias"><button>Read more</button></a>
                             </div>
-                            <a href="/@item.MenuAlias/@item.ID/@item.Alias"><button>Read more</button></a>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </div>

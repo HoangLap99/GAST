@@ -91,13 +91,13 @@ namespace TeamplateHotel.Controllers
             }
             //Danh sách bài viết
             IPagedList<Article> articles = CommentController.GetArticles(menu.ID, page);
-            //if (articles.Count == 1)
-            //{
-            //    DetailArticle detailArticle = CommentController.Detail_Article(articles[0].ID);
-            //    ViewBag.MetaTitle = detailArticle.Article.MetaTitle;
-            //    ViewBag.MetaDesctiption = detailArticle.Article.MetaDescription;
-            //    return View("Article/DetailArticle", detailArticle);
-            //}
+            if (articles.Count == 1)
+            {
+                DetailArticle detailArticle = CommentController.Detail_Article(articles[0].ID);
+                ViewBag.MetaTitle = detailArticle.Article.MetaTitle;
+                ViewBag.MetaDesctiption = detailArticle.Article.MetaDescription;
+                return View("Article/DetailArticle", detailArticle);
+            }
             return View("Article/ListArticle", articles);
             #endregion
 

@@ -99,199 +99,209 @@
     @RenderSection("css", required: false)
 </head>
 <body class="milenia-body--scheme-lightbrown">
-
-    <header>
-        <form class="header-booking d-none d-xl-block" action="https://booking-guarantee.com/Home/SelectRoom?" methods="Get" id="formCheckRoom" target="blank" name="idForm">
-            <input name="hotelKey" type="hidden" value="ABS">
-            <input name="hotelCode" type="hidden" value="ABS">
-            <input name="lang" type="hidden" value="en">
-            <input name="currency" type="hidden" value="USD">
-            <div class="header-booking__item">
-                <span>
-                    <input type="text"
-                           autocomplete="off"
-                           name="fromDate"
-                           value=""
-                           id="current-date"
-                           placeholder="Check-in" />
-                </span>
-            </div>
-            <div class="header-booking__item">
-                <span>
-                    <input type="text"
-                           autocomplete="off"
-                           name="toDate"
-                           value=""
-                           id="current-date"
-                           placeholder="Check-out" />
-                </span>
-            </div>
-            <div class="header-booking__item">
-                <div class="header-booking__select">
-                    <select name="adults">
-                        <option value="0">Adults</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+    @if (ViewBag.Detail != true)
+    {
+        <header>
+            <form class="header-booking d-none d-xl-block" action="https://booking-guarantee.com/Home/SelectRoom?" methods="Get" id="formCheckRoom" target="blank" name="idForm">
+                <input name="hotelKey" type="hidden" value="ABS">
+                <input name="hotelCode" type="hidden" value="ABS">
+                <input name="lang" type="hidden" value="en">
+                <input name="currency" type="hidden" value="USD">
+                <div class="header-booking__item">
+                    <span>
+                        <input type="text"
+                               autocomplete="off"
+                               name="fromDate"
+                               value=""
+                               id="current-date"
+                               placeholder="Check-in" />
+                    </span>
                 </div>
-            </div>
-            <div class="header-booking__item">
-                <div class="header-booking__select">
-                    <select name="child">
-                        <option value="0">Children</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                <div class="header-booking__item">
+                    <span>
+                        <input type="text"
+                               autocomplete="off"
+                               name="toDate"
+                               value=""
+                               id="current-date"
+                               placeholder="Check-out" />
+                    </span>
                 </div>
-            </div>
-            <div class="header-booking__item">
-                <button id="cmdCheckHotel" type="submit">CHECK AVAILABILITY</button>
-            </div>
-        </form>
-        @Html.Partial("Menu/MainMenus")
-        <section class="header-slide">
-            <div class="header-slide__item">
-                <video autoplay loop preload muted width="100%" height="700px">
-                    <source src="~/Content/images/room/room.mp4" type="video/mp4" />
-                </video>
-                <div class="header-slide__desc">
-                    <h1 class="slide-content">COZY. QUITE. COOL.</h1>
-                    <h3 class="slide-content">Book Now</h3>
-                </div>
-            </div>
-        </section>
-    </header>
-    @RenderBody()
-    <footer>
-        <section id="to-top" title="back to top"></section>
-        <section class="footer-social">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-social__logoSocial">
-                        <a href="index.html">
-                            <img src="~/Content/images/logo-footers.svg" alt="logo footer" />
-                        </a>
-                        <div class="footer-social__icon">
-                            <a href="@detailHotel.Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="@detailHotel.Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="@detailHotel.Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
+                <div class="header-booking__item">
+                    <div class="header-booking__select">
+                        <select name="adults">
+                            <option value="0">Adults</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="footer-line"></section>
-        <section class="footer-contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-9">
-                        <div class="footer-contact__info">
-                            <h4>Reach us</h4>
-                            <div><a href="tell: @detailHotel.Tel">@detailHotel.Tel</a></div>
-                            <div>
-                                <a href="mailto: @detailHotel.Email">@detailHotel.Email</a>
+                <div class="header-booking__item">
+                    <div class="header-booking__select">
+                        <select name="child">
+                            <option value="0">Children</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="header-booking__item">
+                    <button id="cmdCheckHotel" type="submit">CHECK AVAILABILITY</button>
+                </div>
+            </form>
+            @Html.Partial("Menu/MainMenus")
+
+
+
+            <section class="header-slide">
+                <div class="header-slide__item">
+                    <video autoplay loop preload muted width="100%" height="700px">
+                        <source src="~/Content/images/room/room.mp4" type="video/mp4" />
+                    </video>
+                    <div class="header-slide__desc">
+                        <h1 class="slide-content">COZY. QUITE. COOL.</h1>
+                        <h3 class="slide-content">Book Now</h3>
+                    </div>
+                </div>
+            </section>
+          
+
+
+
+
+        </header>
+    }
+        @RenderBody()
+        <footer>
+            <section id="to-top" title="back to top"></section>
+            <section class="footer-social">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-social__logoSocial">
+                            <a href="index.html">
+                                <img src="~/Content/images/logo-footers.svg" alt="logo footer" />
+                            </a>
+                            <div class="footer-social__icon">
+                                <a href="@detailHotel.Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="@detailHotel.Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="@detailHotel.Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="footer-contact__info">
-                            <h4>Địa Chỉ :</h4>
-                            <a href="@detailHotel.Location" target="_blank">@detailHotel.Address</a>
-                        </div>
-                        <div class="footer-contact__info">
-                            <h4>Check-in hours</h4>
-                            @Html.Raw(detailHotel.timeWork)
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-3">
-                        <h4>Subscribe to know the latest deals!</h4>
-                        <form class="footer-contact__subscribe d-flex" id="validate1" action="EmailMarketing/SaveEmail" method="post">
-                            <input type="text"
-                                   placeholder="Email Address"
-                                   required
-                                   name="Email"
-                                   class="email-footer" />
-                            <button type="submit">SUBSCRIBE</button>
-                        </form>
                     </div>
                 </div>
-                <div class="footer-contact__copyright">
-                    <div class="footer-contact__law">
-                        @foreach (var item in menufooter.Where(a => a.Type == SystemMenuType.About))
-                        {
-                            <a href="/">@item.Title</a>
-                        }
+            </section>
+            <section class="footer-line"></section>
+            <section class="footer-contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+                            <div class="footer-contact__info">
+                                <h4>Reach us</h4>
+                                <div><a href="tell: @detailHotel.Tel">@detailHotel.Tel</a></div>
+                                <div>
+                                    <a href="mailto: @detailHotel.Email">@detailHotel.Email</a>
+                                </div>
+                            </div>
+                            <div class="footer-contact__info">
+                                <h4>Địa Chỉ :</h4>
+                                <a href="@detailHotel.Location" target="_blank">@detailHotel.Address</a>
+                            </div>
+                            <div class="footer-contact__info">
+                                <h4>Check-in hours</h4>
+                                @Html.Raw(detailHotel.timeWork)
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <h4>Subscribe to know the latest deals!</h4>
+                            <form class="footer-contact__subscribe d-flex" id="validate1" action="EmailMarketing/SaveEmail" method="post">
+                                <input type="text"
+                                       placeholder="Email Address"
+                                       required
+                                       name="Email"
+                                       class="email-footer" />
+                                <button type="submit">SUBSCRIBE</button>
+                            </form>
+                        </div>
                     </div>
+                    <div class="footer-contact__copyright">
+                        <div class="footer-contact__law">
+                            @foreach (var item in menufooter.Where(a => a.Type == SystemMenuType.About))
+                            {
+                                <a href="/">@item.Title</a>
+                            }
+                        </div>
 
-                    <div class="footer-contact__theme">
-                        @detailHotel.CopyRight
-                        <a href="https://webhotel.vn/">IIT Themes</a>
+                        <div class="footer-contact__theme">
+                            @detailHotel.CopyRight
+                            <a href="https://webhotel.vn/">IIT Themes</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </footer>
-    <div id="wraploadding">
-        <div id="imgloadding"><img src="/Areas/Administrator/Content/img/ajax-loader.gif" alt="loading" /></div>
-    </div>
-    <script src="~/Content/js/jquery-3.5.1.min.js"></script>
+            </section>
+        </footer>
+        <div id="wraploadding">
+            <div id="imgloadding"><img src="/Areas/Administrator/Content/img/ajax-loader.gif" alt="loading" /></div>
+        </div>
+        <script src="~/Content/js/jquery-3.5.1.min.js"></script>
 
-    <!-- CDN link -->
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <!-- CDN link -->
+        <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 
-    <!-- Plugin -->
-    <script src="~/Content/plugins/bootstrap-4.5.2/js/bootstrap.min.js"></script>
-    <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="~/Content/plugins/menu/jquery.smartmenus.min.js"></script>
-    <script src="~/Content/plugins/validation1.19.3/jquery.validate.min.js"></script>
-    <script src="~/Content/plugins/slick/slick.min.js"></script>
-    <script src="~/Content/plugins/fontawesome/all.js"></script>
+        <!-- Plugin -->
+        <script src="~/Content/plugins/bootstrap-4.5.2/js/bootstrap.min.js"></script>
+        <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="~/Content/plugins/menu/jquery.smartmenus.min.js"></script>
+        <script src="~/Content/plugins/validation1.19.3/jquery.validate.min.js"></script>
+        <script src="~/Content/plugins/slick/slick.min.js"></script>
+        <script src="~/Content/plugins/fontawesome/all.js"></script>
 
-    <!-- Main JS -->
-    <script src="~/Content/js/validate.js"></script>
-    <script src="~/Content/js/slide.js"></script>
+        <!-- Main JS -->
+        <script src="~/Content/js/validate.js"></script>
+        <script src="~/Content/js/slide.js"></script>
 
-    <script src="~/Content/js/main.js"></script>
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        $("#wraploadding").hide();
-        function LoadingSendEmail() {
-            $("#wraploadding").show();
-            $("#wraploadding").css("width", $(window).width());
-            $("#wraploadding").css("height", $(window).height());
-            $("#imgloadding ").css("top", ($(window).height() / 2) - 80);
-        }
-        $(document).ready(function () {
-            $("#validate1").validate({
-                rules: {
-                  
-                    Email: {
-                        required: true,
-                        email: true,
+        <script src="~/Content/js/main.js"></script>
+        @RenderSection("scripts", required: false)
+        <script type="text/javascript">
+            $("#wraploadding").hide();
+            function LoadingSendEmail() {
+                $("#wraploadding").show();
+                $("#wraploadding").css("width", $(window).width());
+                $("#wraploadding").css("height", $(window).height());
+                $("#imgloadding ").css("top", ($(window).height() / 2) - 80);
+            }
+            $(document).ready(function () {
+                $("#validate1").validate({
+                    rules: {
+
+                        Email: {
+                            required: true,
+                            email: true,
+                        },
                     },
-                },
-                messages: {
-                  
-                    Email: {
-                        required: "Please enter Email",
-                        email: "Email not true",
+                    messages: {
+
+                        Email: {
+                            required: "Please enter Email",
+                            email: "Email not true",
+                        },
                     },
-                },
-                submitHandler: function (form) {
-                    form.submit();
-                    LoadingSendEmail();
-                }
+                    submitHandler: function (form) {
+                        form.submit();
+                        LoadingSendEmail();
+                    }
+                });
             });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
 

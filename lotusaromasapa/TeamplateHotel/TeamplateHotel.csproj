@@ -2349,7 +2349,7 @@
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>8524</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5210/</IISUrl>
+          <IISUrl>http://localhost:5555/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
