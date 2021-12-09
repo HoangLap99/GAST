@@ -1,0 +1,153 @@
+﻿@using ProjectLibrary.Database
+@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Hotel hotel = CommentController.DetailHotel(Request.Cookies["LanguageID"].Value);
+    Menu menu = ViewBag.Menu ?? new Menu();
+}
+<main>
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="contact__form">
+                        <h2>
+                            @menu.MetaDescription
+                        </h2>
+                        <form method="post" action="/Contact/SubmitContact" id="homecontact">
+                            <div class="contact__group">
+                                <div class="contact__input">
+                                    <input type="text"
+                                           name="FullName"
+                                           placeholder="Name"
+                                           required />
+                                </div>
+                                <div class="contact__input">
+                                    <input type="text"
+                                           name="Gender"
+                                           placeholder="Company"
+                                           required />
+                                </div>
+                            </div>
+
+                            <div class="contact__group">
+                                <div class="contact__input">
+                                    <input type="text"
+                                           name="Email"
+                                           placeholder="Email"
+                                           required />
+                                </div>
+                                <div class="contact__input">
+                                    <input type="text"
+                                           name="Tel"
+                                           placeholder="Phone"
+                                           required />
+                                </div>
+                            </div>
+
+                            <div class="contact__group">
+                                <textarea name="Request" placeholder="Your message up to 500 characters..."></textarea>
+                            </div>
+                            <button>SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="contact__info">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                <h1>Visit Us</h1>
+                                <a href="@hotel.Location"
+                                   target="_blank">@hotel.Address</a>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                <h1>Call Us</h1>
+                                <div><a href="tell: @hotel.Tel">@hotel.Tel</a></div>
+                                <div>
+                                    <a href="mailto: @hotel.Email">@hotel.Email</a>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                <h1>Check-in hours</h1>
+                                @Html.Raw(hotel.timeWork)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div id="wraploadding">
+    <div id="imgloadding"><img src="/Areas/Administrator/Content/img/ajax-loader.gif" alt="loading" /></div>
+</div>
+@section scripts{
+    <script>
+    function initMap() {
+        var myLatLng = { @hotel.Location };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: '@hotel.Name'
+        });
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKxeP9U3h8QzyGoPPUuL7prK8pbC8ovg&callback=initMap">
+    </script>
+
+
+
+        <script type="text/javascript">
+            $("#wraploadding").hide();
+            function LoadingSendEmail() {
+                $("#wraploadding").show();
+                $("#wraploadding").css("width", $(window).width());
+                $("#wraploadding").css("height", $(window).height());
+                $("#imgloadding ").css("top", ($(window).height() / 2) - 80);
+            }
+            //validate
+            $(document).ready(function () {
+                $("#homecontact").validate({
+                    rules: {
+                        FullName: "required",
+                        Gender: "required",
+                        Tel: {
+                            required: true,
+                            rangelength: [10, 11],
+                            number: true,
+                        },
+                        Email: {
+                            required: true,
+                            email: true,
+                        },
+                    },
+                    messages: {
+                        FullName: "Please enter Your name",
+                        Gender: "Please enter Company name",
+                        Tel: {
+                            required: "Please enter Your phone",
+                            rangelength: "Phone has 10 or 11 numbers",
+                            number: "Please enter numbers",
+                        },
+                        Email: {
+                            required: "Please enter Email",
+                            email: "Email not true",
+                        },
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                        LoadingSendEmail();
+                    }
+                });
+            });
+        </script>
+    }

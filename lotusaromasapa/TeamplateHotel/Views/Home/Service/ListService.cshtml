@@ -1,0 +1,296 @@
+﻿@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using TeamplateHotel.Models
+@using ProjectLibrary.Database
+@using ProjectLibrary.Config
+@model IEnumerable<Service>
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+    Menu menuGallery = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Gallery);
+    Menu menurestaurant = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Service);
+    List<Service> restaurants = CommentController.GetServices(menurestaurant.ID).Skip(2).Take(2).ToList();
+    int i = 1;
+    List<Slider> sliders = CommentController.GetListSlider(Request.Cookies["LanguageID"].Value);
+    Menu menuroom = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.RoomRate);
+    Article article = CommentController.Articles(menuroom.ID).FirstOrDefault();
+    Hotel hotel = CommentController.DetailHotel(Request.Cookies["LanguageID"].Value);
+}
+
+@section css{
+    <link href="~/Content/css/meeting-rooms/meeting-rooms.css" rel="stylesheet" />
+
+    <link href="~/Content/css/contact/contact.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+}
+<main>
+    <section class="meeting-count">
+        <div class="container">
+            <div class="meeting-count__title">
+                <h1>Group events</h1>
+                <div class="restaurant__line">
+                    <div class="restaurant__line-center"></div>
+                </div>
+                <p>YOUR CORPORATE MEETING</p>
+            </div>
+
+            <div class="meeting-count__block">
+                <div class="row no-margin">
+                    <div class="col-6 col-md-3 meeting-count__01">
+                        <div class="meeting-count__item">
+                            <h1>Total Space</h1>
+                            <p class="count">1500</p>
+                            <span>sq. ft.</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 meeting-count__02">
+                        <div class="meeting-count__item">
+                            <h1>Penthouse</h1>
+                            <p class="count">3341</p>
+                            <span>sq. ft.</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 meeting-count__03">
+                        <div class="meeting-count__item">
+                            <h1>Guests</h1>
+                            <p class="count">198</p>
+                            <span>for banquets</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 meeting-count__04">
+                        <div class="meeting-count__item">
+                            <h1>Meeting Rooms</h1>
+                            <p class="count">22</p>
+                            <span>for events</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="restaurant">
+        <div class="restaurant__title">
+            <h1>@menurestaurant.Title</h1>
+            <div class="restaurant__line">
+                <div class="restaurant__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">
+                @menurestaurant.MetaDescription
+            </p>
+        </div>
+        <div class="restaurant__item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-4 d-flex align-items-center">
+                        <div class="restaurant__item-block">
+                            @Html.Raw(restaurants[0].Description)
+                            <h1>@restaurants[0].Title</h1>
+                            @Html.Raw(restaurants[0].Content)
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="restaurant__item-image">
+                            <img src="@restaurants[0].Image" alt="restaurant home" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant__item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="restaurant__item-image">
+                            <img src="@restaurants[1].Image" alt="restaurant home" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 d-flex align-items-center">
+                        <div class="restaurant__item-block">
+                            @Html.Raw(restaurants[1].Description)
+                            <h1>@restaurants[1].Title</h1>
+                            @Html.Raw(@restaurants[1].Content)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="meeting-event">
+        <div class="meeting-event__title">
+            <h1>@menuGallery.Title</h1>
+            <div class="restaurant__line">
+                <div class="restaurant__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">@menuGallery.MetaDescription</p>
+        </div>
+        <div class="meeting-slide">
+            @foreach (var item in sliders)
+            {
+            <img src="@item.Image" alt="meeting image" />
+            }
+        </div>
+    </section>
+    <section class="meeting-service">
+        <div class="container">
+            <div class="meeting-service__block">
+                <div class="row no-margin">
+                    @foreach (var item in Model.Take(6))
+                    {
+                        <div class="col-12 col-md-4 meeting-service__0_@i">
+                            @Html.Raw(item.Description)
+                            <h1>@item.Title</h1>
+                            @Html.Raw(item.Content)
+                        </div>
+                        i++;
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="meeting-function">
+        <div class="meeting-function__title table-responsive">
+            <h1>@menuroom.Title</h1>
+            <div class="restaurant__line">
+                <div class="restaurant__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">@menuroom.MetaDescription</p>
+        </div>
+
+        @Html.Raw(article.Content)
+    </section>
+    <section class="meeting-contact" style="margin-top:50px">
+      
+            <div class="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="contact__form">
+                                <h2>
+                                    @menu.MetaDescription
+                                </h2>
+                                <form method="post" action="/Contact/SubmitContact" id="homecontact">
+                                    <div class="contact__group">
+                                        <div class="contact__input">
+                                            <input type="text"
+                                                   name="FullName"
+                                                   placeholder="Name"
+                                                   required />
+                                        </div>
+                                        <div class="contact__input">
+                                            <input type="text"
+                                                   name="Gender"
+                                                   placeholder="Company"
+                                                   required />
+                                        </div>
+                                    </div>
+
+                                    <div class="contact__group">
+                                        <div class="contact__input">
+                                            <input type="text"
+                                                   name="Email"
+                                                   placeholder="Email"
+                                                   required />
+                                        </div>
+                                        <div class="contact__input">
+                                            <input type="text"
+                                                   name="Tel"
+                                                   placeholder="Phone"
+                                                   required />
+                                        </div>
+                                    </div>
+
+                                    <div class="contact__group">
+                                        <textarea name="Request" placeholder="Your message up to 500 characters..."></textarea>
+                                    </div>
+                                    <button>SEND MESSAGE</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="contact__info">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                        <h1>Visit Us</h1>
+                                        <a href="@hotel.Location"
+                                           target="_blank">@hotel.Address</a>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                        <h1>Call Us</h1>
+                                        <div><a href="tell: @hotel.Tel">@hotel.Tel</a></div>
+                                        <div>
+                                            <a href="mailto: @hotel.Email">@hotel.Email</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-lg-4 contact__info-padding">
+                                        <h1>Check-in hours</h1>
+                                        @Html.Raw(hotel.timeWork)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+
+    </section>
+</main>
+<div id="wraploadding">
+    <div id="imgloadding"><img src="/Areas/Administrator/Content/img/ajax-loader.gif" alt="loading" /></div>
+</div>
+
+@section scripts{
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKxeP9U3h8QzyGoPPUuL7prK8pbC8ovg&callback=initMap">
+    </script>
+
+
+
+    <script type="text/javascript">
+            $("#wraploadding").hide();
+            function LoadingSendEmail() {
+                $("#wraploadding").show();
+                $("#wraploadding").css("width", $(window).width());
+                $("#wraploadding").css("height", $(window).height());
+                $("#imgloadding ").css("top", ($(window).height() / 2) - 80);
+            }
+            //validate
+            $(document).ready(function () {
+                $("#homecontact").validate({
+                    rules: {
+                        FullName: "required",
+                        Gender: "required",
+                        Tel: {
+                            required: true,
+                            rangelength: [10, 11],
+                            number: true,
+                        },
+                        Email: {
+                            required: true,
+                            email: true,
+                        },
+                    },
+                    messages: {
+                        FullName: "Please enter Your name",
+                        Gender: "Please enter Company name",
+                        Tel: {
+                            required: "Please enter Your phone",
+                            rangelength: "Phone has 10 or 11 numbers",
+                            number: "Please enter numbers",
+                        },
+                        Email: {
+                            required: "Please enter Email",
+                            email: "Email not true",
+                        },
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                        LoadingSendEmail();
+                    }
+                });
+            });
+    </script>
+}
+

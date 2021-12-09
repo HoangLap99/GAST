@@ -1,0 +1,68 @@
+﻿@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using TeamplateHotel.Models
+@using ProjectLibrary.Database
+@using ProjectLibrary.Config
+
+@model  List<Gallery>
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+    int j = (int)(Model.Count - 6);
+    int skip = 3;
+}
+@section css{
+    <link href="~/Content/css/gallery/gallery.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+
+
+}
+<main>
+    <div class="gallery">
+        <div class="container">
+            <div class="gallery__list">
+                <div class="row no-gutter">
+                    @foreach (var item in Model.Take(3))
+                    {
+                    <div class="col-12 col-sm-4">
+                        <div class="gallery__item">
+                            <img src="@item.LargeImage" alt="gallery" />
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            @for (int i = 0; i < j/2; i++)
+            {
+
+            <div class="gallery__list">
+                <div class="row no-gutter">
+                   @foreach (var item in Model.Skip(skip).Take(2))
+                   {
+                    <div class="col-12 col-sm-6">
+                        <div class="gallery__item">
+                            <img src="@item.LargeImage" alt="gallery" />
+                        </div>
+                    </div>
+                   }
+                </div>
+            </div>
+                skip = skip + 2;
+            }
+           
+
+            <div class="gallery__list">
+                <div class="row no-gutter">
+                    @foreach (var item in Model.Skip(skip).Take(3))
+                    {
+                        <div class="col-12 col-sm-4">
+                            <div class="gallery__item">
+                                <img src="@item.LargeImage" alt="gallery" />
+                            </div>
+                        </div>
+                    }
+                    </div>
+            </div>
+        </div>
+    </div>
+</main>

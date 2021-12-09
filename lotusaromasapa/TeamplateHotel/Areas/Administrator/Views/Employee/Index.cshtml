@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = "~/Areas/Administrator/Views/Templates/_LayoutPage.cshtml";
+}
+<form action="@Url.Action("UpdateIndex", "Employee")" method="POST" id="updateIndex">
+    <div id="jtable-main-container"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#jtable-main-container').jtable({
+                title: '@ViewBag.Title',
+                paging: true, //Enable paging
+                pageSize: 20, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Name ASC', //Set default sorting
+                selecting: true, //Enable selecting
+                multiselect: true, //Allow multiple selecting
+                selectingCheckboxes: true, //Show checkboxes on first column
+                columnResizable: true, //Actually, no need to set true since it's default
+                columnSelectable: true, //Actually, no need to set true since it's default
+                saveUserPreferences: true, //Actually, no need to set true since it's default
+                toolbar: {
+                    items: [{
+                            icon: '/Areas/Administrator/Content/img/add.png',
+                            text: 'Thêm mới',
+                            click: function () {
+                                window.location = '@Url.Action("Create", "Employee")';
+                            }
+                        }, {
+                            icon: '/Areas/Administrator/Content/img/Ordering.png',
+                            text: 'Sắp xếp',
+                            click: function () {
+                                $("#updateIndex").submit();
+                            }
+                        }]
+                },
+                actions: {
+                    listAction: '@Url.Action("List", "Employee")',
+                    deleteAction: '@Url.Action("Delete", "Employee")',
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    FullName: {
+                        title: 'FullName',
+                        width: '13%',
+                        
+                    },
+                    Position: {
+                        title: 'Position',
+                        width: '13%',
+                      
+                    },
+                    Image: {
+                        title: 'Image',
+                        width: '8%',
+                        display: function(data) {
+                            return '<img src="' + data.record.Image + '" width="60px" height="60px"/>';
+                        },
+                        inputClass: 'upload'
+                    },
+                    Index: {
+                        title: 'Sort',
+                        width: '4%',
+                        sorting: false,
+                        display: function(data) {
+                            return '<input type="text" name="sort[' + data.record.ID + '].Index" style="width:25px" value="' + data.record.Index + '"/>';
+                        }
+                    },
+
+                    '':
+                        {
+                            title: '',
+                            width: '2%',
+                            sorting: false,
+                        display: function (data) {
+                            return '<button title="Edit" type="button" class="jtable-command-button jtable-edit-command-button" onclick="editRecord(' + data.record.ID + ')"><span>Edit</span></button>';
+                            }
+                        }
+                }
+            });
+            $('#jtable-main-container').jtable('load');
+        });
+    </script>
+</form>
+
+<script>
+
+    function editRecord(advId) {
+        window.location = '@Url.Action("Update","Employee")' + '/' + advId;
+    }
+    $("#ListMenu").change(function () {
+        $('#jtable-main-container').jtable('load', { menuId: $("#ListMenu").val() });
+    });
+</script>
+

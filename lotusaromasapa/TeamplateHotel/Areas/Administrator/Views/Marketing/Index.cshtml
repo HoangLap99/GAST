@@ -1,0 +1,58 @@
+﻿@model ProjectLibrary.Database.EmailMarketing
+@{
+    Layout = "/Areas/Administrator/Views/Templates/_LayoutPage.cshtml";
+}
+
+<div id="jtable-main-container"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jtable-main-container').jtable({
+            title: '@ViewBag.Title',
+            paging: true, //Enable paging
+            pageSize: 20, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            multiselect: true, //Allow multiple selecting
+            selectingCheckboxes: true, //Show checkboxes on first column
+            columnResizable: false, //Actually, no need to set true since it's default
+            columnSelectable: true, //Actually, no need to set true since it's default
+            saveUserPreferences: false, //Actually, no need to set true since it's default
+            actions: {
+                listAction: '@Url.Action("List", "Marketing")',
+                deleteAction: '@Url.Action("Delete", "Marketing")',
+                updateAction: '@Url.Action("Edit", "Marketing")'
+                //createAction: '@Url.Action("Create", "Marketing")'
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Email: {
+                    title: '@Html.DisplayNameFor(c => c.Email)',
+                    width: '10%',
+                    inputClass: 'full-width',
+                    sorting: false,
+                },
+                @*Tel: {
+                    title: '@Html.DisplayNameFor(c => c.Tel)',
+                    width: '10%',
+                    inputClass: 'full-width',
+                    sorting: false,
+                },
+                Note: {
+                    title: '@Html.DisplayNameFor(c => c.Note)',
+                    width: '10%',
+                    inputClass: 'full-width',
+                    sorting: false,
+                },*@
+
+            },
+        });
+        //Load data
+        $('#jtable-main-container').jtable('load');
+    });
+
+</script>

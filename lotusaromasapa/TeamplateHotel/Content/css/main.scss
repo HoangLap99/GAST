@@ -1,0 +1,1030 @@
+@import "./mixin.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: $font-title, $font-content, sans-serif;
+  color: $text-color;
+  font-size: 15px;
+  line-height: 27px;
+  font-weight: 500;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+.slick-slide:focus,
+select:focus,
+img:focus {
+  outline: none;
+}
+input {
+  height: 46px;
+}
+input,
+textarea {
+  @include border-color();
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 46px;
+}
+
+input,
+textarea,
+select {
+  text-indent: 10px;
+  font-family: $font-content;
+  font-size: 15px;
+  width: 100%;
+  color: $text-color;
+  &::placeholder {
+    color: $text-color;
+  }
+}
+label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+label.error {
+  font-family: $font-content;
+  font-size: 12px;
+  color: red;
+}
+// change color when click and move mouse
+::selection {
+  background: $main-color;
+  color: #fff;
+}
+::-moz-selection {
+  background: $main-color;
+  color: #fff;
+}
+::-webkit-selection {
+  background: $main-color;
+  color: #fff;
+}
+
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+.no-margin {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+// style for slick slide
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  background-color: $main-color;
+  height: 50px;
+  width: 50px;
+  @include transition();
+  &:hover {
+    background-color: #000;
+  }
+}
+.slick-prev {
+  left: 0px;
+}
+.slick-next {
+  right: 0px;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Font Awesome 5 Pro";
+  font-size: 40px;
+}
+.slick-prev:before {
+  content: "\f053";
+}
+.slick-next:before {
+  content: "\f054";
+}
+
+// style for header
+.header-fixed {
+  @include transition();
+  position: relative;
+  z-index: 1;
+}
+
+.fixed-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  box-shadow: 2px 5px 5px #00000059;
+}
+.header {
+  &__logo {
+    padding-left: 20px;
+    img#logo-green {
+      display: none;
+    }
+  }
+}
+
+// style for slide header
+.header-slide {
+  height: 700px;
+  top: -70px;
+  .slick-dots li button:before {
+    content: "";
+  }
+  .slick-dots {
+    bottom: 0px;
+  }
+  .slick-dots li {
+    width: 90px;
+  }
+  .slick-dots li.slick-active button {
+    background-color: #fff;
+    height: 3px;
+    width: 100%;
+  }
+  .slick-dots li button {
+    background-color: #ffffff40;
+    height: 2px;
+    width: 100%;
+    padding: 0;
+  }
+  li.slick-active {
+    background-color: #fff;
+    height: 1px;
+  }
+  &__item {
+    position: relative;
+    text-align: center;
+    video {
+      object-fit: cover;
+      background-size: cover;
+    }
+  }
+  &__desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h1 {
+      font-size: 52px;
+      color: #fff;
+      line-height: 52px;
+      font-family: $font-title, sans-serif;
+    }
+    h3 {
+      font-size: 12px;
+      color: #fff;
+      line-height: 16px;
+      font-family: $font-content, sans-serif;
+    }
+  }
+  img {
+    height: 700px;
+    width: 100%;
+  }
+}
+
+// style for daterangepicker
+table.table-condensed th.prev.available,
+th.next.available,
+th.month {
+  background-color: $main-color;
+  color: #fff;
+  border-radius: 0 !important;
+  padding: 5px;
+}
+.daterangepicker .calendar-table .next span,
+.daterangepicker .calendar-table .prev span {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+.daterangepicker td.active,
+button.applyBtn {
+  background-color: $main-color;
+}
+button.applyBtn {
+  border: none;
+}
+
+// for header-booking
+.header-booking {
+  height: 46px;
+}
+.header-booking__tablet {
+  margin: 0px 10px;
+}
+.header-booking__item {
+  width: 100%;
+  float: left;
+  span {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "\f073";
+      font-family: "Font Awesome 5 Pro";
+      top: 0px;
+      right: 13px;
+      cursor: pointer;
+      font-size: 16px;
+      color: $main-color;
+    }
+  }
+  select {
+    width: 100%;
+    @include border-color();
+  }
+  button {
+    @include button();
+    height: 46px;
+    width: 100%;
+    font-size: 14px;
+    padding: 0;
+  }
+}
+
+.header-booking__group {
+  .header-booking__item {
+    width: 50%;
+  }
+}
+.header-booking__select {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Pro";
+    top: 16px;
+    right: 13px;
+    cursor: pointer;
+    font-size: 16px;
+    color: $main-color;
+  }
+}
+.sm-clean a .sub-arrow {
+  background-color: $main-color;
+  color: #fff;
+}
+#show-menu-mobile {
+  color: #fff;
+  padding-right: 20px;
+}
+
+// style main -------------------------------------------->
+// book-room ---------------------------------------------->
+.book-room {
+  background-color: #f7f9fa;
+  text-align: center;
+  margin-top: -70px;
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 32px;
+    font-family: $font-title;
+  }
+  p {
+    font-size: 14px;
+    font-family: $font-content;
+  }
+  button {
+    @include button();
+  }
+  &__padding {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+  }
+}
+// room, show list room ---------------------------------->
+.rooms {
+  text-align: center;
+  padding: 50px 0 50px;
+  h1 {
+    font-size: 36px;
+    font-family: $font-title;
+  }
+  &__line {
+    width: 100%;
+    @include flex-center-horizon();
+  }
+  &__line-center {
+    background-color: $main-color;
+    height: 1px;
+    width: 50px;
+  }
+  p {
+    font-size: 12px;
+    font-family: $font-content;
+    text-transform: uppercase;
+  }
+
+  // rooms list
+  &__list-item {
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    object-fit: cover;
+    img {
+      width: 100%;
+      @include transition();
+    }
+    &:hover .rooms__list-booking-center {
+      transform: translateX(0);
+    }
+    &:hover .rooms__list-name {
+      transform: translateY(100%);
+    }
+    &:hover img {
+      transform: scale(1.1);
+    }
+    img.image-hide {
+      opacity: 0;
+    }
+  }
+  &__list-find {
+    position: absolute;
+    @include flex-center();
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    a {
+      font-size: 16px;
+      color: $main-color;
+      &::after {
+        padding-left: 7px;
+        content: "\f35a";
+        font-family: "Font Awesome 5 Pro";
+        opacity: 0;
+        @include transition();
+        font-size: 20px;
+        margin-top: 5px;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+  &__list-find-content {
+    padding: 20px;
+  }
+  &__list-booking-center,
+  &__list-name {
+    position: absolute;
+    @include transition();
+  }
+  &__list-booking-center {
+    height: 100%;
+    width: 92%;
+    transform: translateX(-100%);
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    @include flex-center();
+  }
+  &__list-booking {
+    text-align: left;
+    padding: 5px;
+
+    a {
+      color: $text-color;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    h3 {
+      font-size: 14px;
+      color: $main-color;
+    }
+    p {
+      font-size: 14px;
+      text-transform: unset;
+      padding-bottom: 0px;
+    }
+    button {
+      @include button();
+      width: 100%;
+      margin-top: 15px;
+    }
+    span {
+      font-family: $font-content;
+    }
+  }
+  &__list-price {
+    @include flex-center-vertical();
+    justify-content: space-between;
+  }
+  .checked {
+    color: orange;
+  }
+  &__list-name {
+    font-family: $font-content;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 5px 30px;
+  }
+}
+.over-text {
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+// restaurant -------------------------------------------->
+.restaurant {
+  text-align: center;
+  padding: 50px 0 50px;
+  &__title {
+    padding: 0 15px;
+  }
+  h1 {
+    font-size: 36px;
+    font-family: $font-title;
+  }
+  &__line {
+    width: 100%;
+    @include flex-center-horizon();
+  }
+  &__line-center {
+    background-color: $main-color;
+    height: 1px;
+    width: 50px;
+  }
+  p {
+    font-size: 12px;
+    font-family: $font-content;
+    text-transform: uppercase;
+  }
+  &__item {
+    padding: 20px 0;
+  }
+  &__item-block {
+    svg {
+      font-size: 110px;
+    }
+    h1 {
+      font-size: 28px;
+      font-family: $font-title;
+    }
+    p {
+      font-size: 14px;
+      font-family: $font-content;
+      text-transform: unset;
+    }
+    a {
+      color: $main-color;
+      &::after {
+        padding-left: 7px;
+        content: "\f35a";
+        font-family: "Font Awesome 5 Pro";
+        opacity: 0;
+        @include transition();
+        font-size: 20px;
+        margin-top: 5px;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+  &__item-image {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// experience -------------------------------------------->
+.experience {
+  position: relative;
+  .parallax {
+    background-image: url("../images/home/home-17.jpeg");
+    min-height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &__title {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+  &__block {
+    text-align: center;
+    h1,
+    svg {
+      color: #fff;
+      font-size: 60px;
+    }
+  }
+}
+
+// guest book -------------------------------------------->
+.guest {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #f7f9fa;
+  &__title {
+    padding: 0 15px;
+  }
+  h1 {
+    font-size: 36px;
+    font-family: $font-title;
+  }
+  &__line {
+    width: 100%;
+    @include flex-center-horizon();
+  }
+  &__line-center {
+    background-color: $main-color;
+    height: 1px;
+    width: 50px;
+  }
+  p {
+    font-size: 12px;
+    font-family: $font-content;
+    text-transform: uppercase;
+  }
+  &__item {
+    img {
+      width: 100%;
+    }
+    h1 {
+      padding-top: 20px;
+      font-size: 26px;
+    }
+    span {
+      font-size: 14px;
+      color: #8d929d;
+      font-family: $font-content;
+    }
+    p {
+      font-size: 14px;
+      text-transform: unset;
+    }
+  }
+  &__block {
+    // position: absolute;
+    background-color: #fff;
+    padding: 15px;
+  }
+}
+// change position when display 1024px
+.guest-position {
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: #2326331a 0px 10px 40px 0px;
+}
+
+// event ------------------------------------------------->
+.event {
+  text-align: center;
+  background-color: #000;
+  padding: 50px 0;
+  &__container {
+    max-width: 830px;
+    margin: auto;
+  }
+  &__title {
+    padding: 0 15px;
+  }
+  h1 {
+    font-size: 26px;
+    font-family: $font-title;
+    color: #fff;
+  }
+  &__line {
+    width: 100%;
+    @include flex-center-horizon();
+  }
+  &__line-center {
+    background-color: #fff;
+    height: 1px;
+    width: 50px;
+  }
+  p {
+    font-size: 14px;
+    font-family: $font-content;
+    color: #8d929d;
+    text-align: start;
+  }
+  &__small {
+    position: relative;
+    overflow: hidden;
+    &:hover img {
+      transform: scale(1.1);
+    }
+    img {
+      width: 100%;
+      @include transition();
+    }
+  }
+  &__large {
+    padding: 15px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  &__date {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+    text-align: center;
+    width: 70px;
+    height: 85px;
+    padding: 15px;
+    color: #000;
+    &::before {
+      position: absolute;
+      content: "";
+      display: block;
+      -webkit-clip-path: polygon(70px 0, 70px 65px, 35px 75px, 0 65px, 0 0);
+      clip-path: polygon(70px 0, 70px 65px, 35px 75px, 0 65px, 0 0);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      z-index: 1;
+    }
+    p {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 0;
+      color: $main-color;
+      text-align: center;
+    }
+  }
+  &__line-event {
+    background-color: #393b3f;
+    height: 1px;
+    width: 100%;
+    margin: 30px 0;
+  }
+  button {
+    @include button-subscribe();
+    font-family: $font-content;
+  }
+}
+.event-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+// articles ---------------------------------------------->
+.articles {
+  text-align: center;
+  padding: 50px 0;
+  &__title {
+    padding: 0 15px;
+  }
+  h1 {
+    font-size: 26px;
+    font-family: $font-title;
+    color: #000;
+  }
+  &__line {
+    width: 100%;
+    @include flex-center-horizon();
+  }
+  &__line-center {
+    background-color: #000;
+    height: 1px;
+    width: 50px;
+  }
+  p {
+    font-size: 14px;
+    font-family: $font-content;
+    color: #8d929d;
+  }
+  &__item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin: 0 30px;
+    img {
+      width: 100%;
+      @include transition();
+    }
+    &:hover .articles__bg {
+      opacity: 1;
+    }
+    &:hover img {
+      transform: scale(1.05);
+    }
+    &:hover .articles__desc {
+      bottom: 0;
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e66;
+    opacity: 0;
+    @include transition();
+  }
+  &__desc {
+    text-align: start;
+    position: absolute;
+    bottom: -56px;
+    @include transition();
+    width: 100%;
+    span {
+      font-size: 14px;
+      color: #fff;
+    }
+    h2 {
+      font-size: 20px;
+      color: #fff;
+      font-family: $font-title;
+    }
+    button {
+      width: 100%;
+      background-color: #fff;
+      height: 52px;
+      margin-top: 15px;
+      text-align: start;
+      border: none;
+      box-shadow: 0 1px 8px 1px #2326331f;
+      padding-left: 7px;
+      color: $main-color;
+      font-family: $font-content;
+      font-weight: 500;
+      font-size: 16px;
+      &::after {
+        font-family: "Font Awesome 5 Pro";
+        content: "\f0a9";
+        padding-left: 7px;
+      }
+    }
+  }
+  &__group {
+    padding: 20px;
+  }
+  button.all-articles {
+    @include button();
+    margin-top: 40px;
+  }
+}
+
+// contact us -------------------------------------------->
+.contact {
+  &__us {
+    padding-bottom: 20px;
+  }
+  &__us .contact__us-item:last-child {
+    padding: 10px 15px;
+    @include flex-center();
+  }
+  &__us-item {
+    position: relative;
+    padding: 15px 0;
+    img {
+      width: 100%;
+    }
+    h1 {
+      position: absolute;
+      font-size: 30px;
+      color: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    h2 {
+      font-size: 25px;
+      text-align: center;
+    }
+    button {
+      @include button();
+      width: 100%;
+    }
+  }
+  &__input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  &__group {
+    textarea {
+      margin-bottom: 15px;
+      height: 75px;
+    }
+  }
+}
+
+// book a room ------------------------------------------->
+.book-a-room {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  height: 450px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bookARoom {
+    text-align: center;
+    width: 100%;
+    @include center-block();
+    h1 {
+      color: #fff;
+      font-size: 30px;
+    }
+    button {
+      @include button();
+    }
+  }
+}
+// style for footer -------------------------------------->
+// back to top
+#to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: $main-color;
+  font-weight: bold;
+  color: #ffffff;
+  size: 30px;
+  display: none;
+  font-family: "Font Awesome 5 Pro";
+  &::after {
+    content: "\f077";
+  }
+  &:hover::after {
+    content: "\f325";
+  }
+}
+footer {
+  background-color: #000;
+}
+.footer-social {
+  padding: 80px 0;
+  text-align: center;
+  svg {
+    @include transition();
+    height: 50px !important;
+    width: 50px !important;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin: 7px;
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+  &__logoSocial {
+    width: 100%;
+  }
+}
+
+.footer-line {
+  height: 1px;
+  background-color: #373940;
+}
+.footer-contact {
+  .row {
+    padding: 60px 0;
+  }
+  h4 {
+    font-family: "Frank Ruhl Libre", sans-serif;
+    color: #fff;
+    font-size: 20px;
+  }
+  &__subscribe {
+    position: relative;
+    input {
+      width: 100%;
+    }
+    button {
+      @include button-subscribe();
+      height: 46px;
+      font-size: 14px;
+    }
+    label.error {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #868b98;
+    }
+  }
+  &__copyright {
+    color: #868b98;
+    font-family: $font-content;
+    a {
+      color: #868b98;
+      @include transition();
+
+      &:hover {
+        color: #fff;
+      }
+    }
+    @include flex-center-column();
+    padding: 20px 0;
+    font-size: 13px;
+  }
+  &__law a {
+    margin-right: 7px;
+  }
+  &__info {
+    padding-bottom: 20px;
+    a {
+      color: #868b98;
+      @include transition();
+      font-family: $font-content;
+      &:hover {
+        color: #fff;
+      }
+    }
+    width: 100%;
+    p {
+      margin-bottom: 0;
+      color: #868b98;
+      font-family: $font-content;
+    }
+  }
+}
+
+// keyframes ------------------------------------>
+@-webkit-keyframes fadeInUpSD {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 0);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale3d(1, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes fadeInUpSD {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 0);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale3d(1, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.slick-active .slide-content {
+  animation-name: fadeInUpSD;
+  animation-duration: 2s;
+}

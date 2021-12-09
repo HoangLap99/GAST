@@ -1,0 +1,947 @@
+html {
+  scroll-behavior: smooth; }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Frank Ruhl Libre", "Quicksand", sans-serif;
+  color: #474b56;
+  font-size: 15px;
+  line-height: 27px;
+  font-weight: 500; }
+
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+  a:focus {
+    outline: none; }
+
+ul {
+  list-style: none;
+  margin-bottom: 0; }
+
+input:focus,
+button:focus,
+textarea:focus,
+.slick-slide:focus,
+select:focus,
+img:focus {
+  outline: none; }
+
+input {
+  height: 46px; }
+
+input,
+textarea {
+  border: 1px solid #8b8b8b4d; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 46px; }
+
+input,
+textarea,
+select {
+  text-indent: 10px;
+  font-family: "Quicksand";
+  font-size: 15px;
+  width: 100%;
+  color: #474b56; }
+  input::placeholder,
+  textarea::placeholder,
+  select::placeholder {
+    color: #474b56; }
+
+label {
+  margin-bottom: 0;
+  cursor: pointer; }
+
+label.error {
+  font-family: "Quicksand";
+  font-size: 12px;
+  color: red; }
+
+::selection {
+  background: #0b3d24;
+  color: #fff; }
+
+::-moz-selection {
+  background: #0b3d24;
+  color: #fff; }
+
+::-webkit-selection {
+  background: #0b3d24;
+  color: #fff; }
+
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0; }
+
+.no-margin {
+  margin-right: 0;
+  margin-left: 0; }
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  background-color: #0b3d24;
+  height: 50px;
+  width: 50px;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out; }
+  .slick-prev:hover,
+  .slick-next:hover {
+    background-color: #000; }
+
+.slick-prev {
+  left: 0px; }
+
+.slick-next {
+  right: 0px; }
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Font Awesome 5 Pro";
+  font-size: 40px; }
+
+.slick-prev:before {
+  content: "\f053"; }
+
+.slick-next:before {
+  content: "\f054"; }
+
+.header-fixed {
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  z-index: 1; }
+
+.fixed-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  box-shadow: 2px 5px 5px #00000059; }
+
+.header__logo {
+  padding-left: 20px; }
+  .header__logo img#logo-green {
+    display: none; }
+
+.header-slide {
+  height: 700px;
+  top: -70px; }
+  .header-slide .slick-dots li button:before {
+    content: ""; }
+  .header-slide .slick-dots {
+    bottom: 0px; }
+  .header-slide .slick-dots li {
+    width: 90px; }
+  .header-slide .slick-dots li.slick-active button {
+    background-color: #fff;
+    height: 3px;
+    width: 100%; }
+  .header-slide .slick-dots li button {
+    background-color: #ffffff40;
+    height: 2px;
+    width: 100%;
+    padding: 0; }
+  .header-slide li.slick-active {
+    background-color: #fff;
+    height: 1px; }
+  .header-slide__item {
+    position: relative;
+    text-align: center; }
+    .header-slide__item video {
+      object-fit: cover;
+      background-size: cover; }
+  .header-slide__desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .header-slide__desc h1 {
+      font-size: 52px;
+      color: #fff;
+      line-height: 52px;
+      font-family: "Frank Ruhl Libre", sans-serif; }
+    .header-slide__desc h3 {
+      font-size: 12px;
+      color: #fff;
+      line-height: 16px;
+      font-family: "Quicksand", sans-serif; }
+  .header-slide img {
+    height: 700px;
+    width: 100%; }
+
+table.table-condensed th.prev.available,
+th.next.available,
+th.month {
+  background-color: #0b3d24;
+  color: #fff;
+  border-radius: 0 !important;
+  padding: 5px; }
+
+.daterangepicker .calendar-table .next span,
+.daterangepicker .calendar-table .prev span {
+  border: solid #fff;
+  border-width: 0 2px 2px 0; }
+
+.daterangepicker td.active,
+button.applyBtn {
+  background-color: #0b3d24; }
+
+button.applyBtn {
+  border: none; }
+
+.header-booking {
+  height: 46px; }
+
+.header-booking__tablet {
+  margin: 0px 10px; }
+
+.header-booking__item {
+  width: 100%;
+  float: left; }
+  .header-booking__item span {
+    position: relative; }
+    .header-booking__item span::after {
+      position: absolute;
+      content: "\f073";
+      font-family: "Font Awesome 5 Pro";
+      top: 0px;
+      right: 13px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #0b3d24; }
+  .header-booking__item select {
+    width: 100%;
+    border: 1px solid #8b8b8b4d; }
+  .header-booking__item button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Quicksand";
+    height: 46px;
+    width: 100%;
+    font-size: 14px;
+    padding: 0; }
+    .header-booking__item button:hover {
+      background-color: #000; }
+
+.header-booking__group .header-booking__item {
+  width: 50%; }
+
+.header-booking__select {
+  position: relative; }
+  .header-booking__select::after {
+    position: absolute;
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Pro";
+    top: 16px;
+    right: 13px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #0b3d24; }
+
+.sm-clean a .sub-arrow {
+  background-color: #0b3d24;
+  color: #fff; }
+
+#show-menu-mobile {
+  color: #fff;
+  padding-right: 20px; }
+
+.book-room {
+  background-color: #f7f9fa;
+  text-align: center;
+  margin-top: -70px; }
+  .book-room img {
+    width: 100%; }
+  .book-room h1 {
+    font-size: 32px;
+    font-family: "Frank Ruhl Libre"; }
+  .book-room p {
+    font-size: 14px;
+    font-family: "Quicksand"; }
+  .book-room button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Quicksand"; }
+    .book-room button:hover {
+      background-color: #000; }
+  .book-room__padding {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center; }
+
+.rooms {
+  text-align: center;
+  padding: 50px 0 50px; }
+  .rooms h1 {
+    font-size: 36px;
+    font-family: "Frank Ruhl Libre"; }
+  .rooms__line {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+  .rooms__line-center {
+    background-color: #0b3d24;
+    height: 1px;
+    width: 50px; }
+  .rooms p {
+    font-size: 12px;
+    font-family: "Quicksand";
+    text-transform: uppercase; }
+  .rooms__list-item {
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    object-fit: cover; }
+    .rooms__list-item img {
+      width: 100%;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out; }
+    .rooms__list-item:hover .rooms__list-booking-center {
+      transform: translateX(0); }
+    .rooms__list-item:hover .rooms__list-name {
+      transform: translateY(100%); }
+    .rooms__list-item:hover img {
+      transform: scale(1.1); }
+    .rooms__list-item img.image-hide {
+      opacity: 0; }
+  .rooms__list-find {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff; }
+    .rooms__list-find a {
+      font-size: 16px;
+      color: #0b3d24; }
+      .rooms__list-find a::after {
+        padding-left: 7px;
+        content: "\f35a";
+        font-family: "Font Awesome 5 Pro";
+        opacity: 0;
+        -webkit-transition: 0.3s ease-in-out;
+        -moz-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
+        font-size: 20px;
+        margin-top: 5px; }
+      .rooms__list-find a:hover::after {
+        opacity: 1; }
+  .rooms__list-find-content {
+    padding: 20px; }
+  .rooms__list-booking-center, .rooms__list-name {
+    position: absolute;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out; }
+  .rooms__list-booking-center {
+    height: 100%;
+    width: 92%;
+    transform: translateX(-100%);
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .rooms__list-booking {
+    text-align: left;
+    padding: 5px; }
+    .rooms__list-booking a {
+      color: #474b56; }
+    .rooms__list-booking h1 {
+      font-size: 22px; }
+    .rooms__list-booking h3 {
+      font-size: 14px;
+      color: #0b3d24; }
+    .rooms__list-booking p {
+      font-size: 14px;
+      text-transform: unset;
+      padding-bottom: 0px; }
+    .rooms__list-booking button {
+      color: #fff;
+      padding: 10px;
+      border: none;
+      background-color: #0b3d24;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: "Quicksand";
+      width: 100%;
+      margin-top: 15px; }
+      .rooms__list-booking button:hover {
+        background-color: #000; }
+    .rooms__list-booking span {
+      font-family: "Quicksand"; }
+  .rooms__list-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .rooms .checked {
+    color: orange; }
+  .rooms__list-name {
+    font-family: "Quicksand";
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 5px 30px; }
+
+.over-text {
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical; }
+
+.restaurant {
+  text-align: center;
+  padding: 50px 0 50px; }
+  .restaurant__title {
+    padding: 0 15px; }
+  .restaurant h1 {
+    font-size: 36px;
+    font-family: "Frank Ruhl Libre"; }
+  .restaurant__line {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+  .restaurant__line-center {
+    background-color: #0b3d24;
+    height: 1px;
+    width: 50px; }
+  .restaurant p {
+    font-size: 12px;
+    font-family: "Quicksand";
+    text-transform: uppercase; }
+  .restaurant__item {
+    padding: 20px 0; }
+  .restaurant__item-block svg {
+    font-size: 110px; }
+  .restaurant__item-block h1 {
+    font-size: 28px;
+    font-family: "Frank Ruhl Libre"; }
+  .restaurant__item-block p {
+    font-size: 14px;
+    font-family: "Quicksand";
+    text-transform: unset; }
+  .restaurant__item-block a {
+    color: #0b3d24; }
+    .restaurant__item-block a::after {
+      padding-left: 7px;
+      content: "\f35a";
+      font-family: "Font Awesome 5 Pro";
+      opacity: 0;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      font-size: 20px;
+      margin-top: 5px; }
+    .restaurant__item-block a:hover::after {
+      opacity: 1; }
+  .restaurant__item-image img {
+    width: 100%; }
+
+.experience {
+  position: relative; }
+  .experience .parallax {
+    background-image: url("../images/home/home-17.jpeg");
+    min-height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  .experience__title {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute; }
+  .experience__block {
+    text-align: center; }
+    .experience__block h1,
+    .experience__block svg {
+      color: #fff;
+      font-size: 60px; }
+
+.guest {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #f7f9fa; }
+  .guest__title {
+    padding: 0 15px; }
+  .guest h1 {
+    font-size: 36px;
+    font-family: "Frank Ruhl Libre"; }
+  .guest__line {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+  .guest__line-center {
+    background-color: #0b3d24;
+    height: 1px;
+    width: 50px; }
+  .guest p {
+    font-size: 12px;
+    font-family: "Quicksand";
+    text-transform: uppercase; }
+  .guest__item img {
+    width: 100%; }
+  .guest__item h1 {
+    padding-top: 20px;
+    font-size: 26px; }
+  .guest__item span {
+    font-size: 14px;
+    color: #8d929d;
+    font-family: "Quicksand"; }
+  .guest__item p {
+    font-size: 14px;
+    text-transform: unset; }
+  .guest__block {
+    background-color: #fff;
+    padding: 15px; }
+
+.guest-position {
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: #2326331a 0px 10px 40px 0px; }
+
+.event {
+  text-align: center;
+  background-color: #000;
+  padding: 50px 0; }
+  .event__container {
+    max-width: 830px;
+    margin: auto; }
+  .event__title {
+    padding: 0 15px; }
+  .event h1 {
+    font-size: 26px;
+    font-family: "Frank Ruhl Libre";
+    color: #fff; }
+  .event__line {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+  .event__line-center {
+    background-color: #fff;
+    height: 1px;
+    width: 50px; }
+  .event p {
+    font-size: 14px;
+    font-family: "Quicksand";
+    color: #8d929d;
+    text-align: start; }
+  .event__small {
+    position: relative;
+    overflow: hidden; }
+    .event__small:hover img {
+      transform: scale(1.1); }
+    .event__small img {
+      width: 100%;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out; }
+  .event__large {
+    padding: 15px; }
+    .event__large p {
+      margin-bottom: 0; }
+  .event__date {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+    text-align: center;
+    width: 70px;
+    height: 85px;
+    padding: 15px;
+    color: #000; }
+    .event__date::before {
+      position: absolute;
+      content: "";
+      display: block;
+      -webkit-clip-path: polygon(70px 0, 70px 65px, 35px 75px, 0 65px, 0 0);
+      clip-path: polygon(70px 0, 70px 65px, 35px 75px, 0 65px, 0 0);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      z-index: 1; }
+    .event__date p {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 0;
+      color: #0b3d24;
+      text-align: center; }
+  .event__line-event {
+    background-color: #393b3f;
+    height: 1px;
+    width: 100%;
+    margin: 30px 0; }
+  .event button {
+    color: #fff;
+    padding: 0 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 14px;
+    line-height: 46px;
+    font-family: "Quicksand"; }
+    .event button:hover {
+      background-color: #fff;
+      color: #0b3d24; }
+
+.event-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical; }
+
+.articles {
+  text-align: center;
+  padding: 50px 0; }
+  .articles__title {
+    padding: 0 15px; }
+  .articles h1 {
+    font-size: 26px;
+    font-family: "Frank Ruhl Libre";
+    color: #000; }
+  .articles__line {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+  .articles__line-center {
+    background-color: #000;
+    height: 1px;
+    width: 50px; }
+  .articles p {
+    font-size: 14px;
+    font-family: "Quicksand";
+    color: #8d929d; }
+  .articles__item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin: 0 30px; }
+    .articles__item img {
+      width: 100%;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out; }
+    .articles__item:hover .articles__bg {
+      opacity: 1; }
+    .articles__item:hover img {
+      transform: scale(1.05); }
+    .articles__item:hover .articles__desc {
+      bottom: 0; }
+  .articles__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e66;
+    opacity: 0;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out; }
+  .articles__desc {
+    text-align: start;
+    position: absolute;
+    bottom: -56px;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    width: 100%; }
+    .articles__desc span {
+      font-size: 14px;
+      color: #fff; }
+    .articles__desc h2 {
+      font-size: 20px;
+      color: #fff;
+      font-family: "Frank Ruhl Libre"; }
+    .articles__desc button {
+      width: 100%;
+      background-color: #fff;
+      height: 52px;
+      margin-top: 15px;
+      text-align: start;
+      border: none;
+      box-shadow: 0 1px 8px 1px #2326331f;
+      padding-left: 7px;
+      color: #0b3d24;
+      font-family: "Quicksand";
+      font-weight: 500;
+      font-size: 16px; }
+      .articles__desc button::after {
+        font-family: "Font Awesome 5 Pro";
+        content: "\f0a9";
+        padding-left: 7px; }
+  .articles__group {
+    padding: 20px; }
+  .articles button.all-articles {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Quicksand";
+    margin-top: 40px; }
+    .articles button.all-articles:hover {
+      background-color: #000; }
+
+.contact__us {
+  padding-bottom: 20px; }
+.contact__us .contact__us-item:last-child {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+.contact__us-item {
+  position: relative;
+  padding: 15px 0; }
+  .contact__us-item img {
+    width: 100%; }
+  .contact__us-item h1 {
+    position: absolute;
+    font-size: 30px;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .contact__us-item h2 {
+    font-size: 25px;
+    text-align: center; }
+  .contact__us-item button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Quicksand";
+    width: 100%; }
+    .contact__us-item button:hover {
+      background-color: #000; }
+.contact__input {
+  margin-bottom: 10px;
+  width: 100%; }
+.contact__group textarea {
+  margin-bottom: 15px;
+  height: 75px; }
+
+.book-a-room {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  height: 450px; }
+  .book-a-room img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .book-a-room .bookARoom {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .book-a-room .bookARoom h1 {
+      color: #fff;
+      font-size: 30px; }
+    .book-a-room .bookARoom button {
+      color: #fff;
+      padding: 10px;
+      border: none;
+      background-color: #0b3d24;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: "Quicksand"; }
+      .book-a-room .bookARoom button:hover {
+        background-color: #000; }
+
+#to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: #0b3d24;
+  font-weight: bold;
+  color: #ffffff;
+  size: 30px;
+  display: none;
+  font-family: "Font Awesome 5 Pro"; }
+  #to-top::after {
+    content: "\f077"; }
+  #to-top:hover::after {
+    content: "\f325"; }
+
+footer {
+  background-color: #000; }
+
+.footer-social {
+  padding: 80px 0;
+  text-align: center; }
+  .footer-social svg {
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    height: 50px !important;
+    width: 50px !important;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin: 7px; }
+    .footer-social svg:hover {
+      background-color: #fff;
+      color: #000; }
+  .footer-social__logoSocial {
+    width: 100%; }
+
+.footer-line {
+  height: 1px;
+  background-color: #373940; }
+
+.footer-contact .row {
+  padding: 60px 0; }
+.footer-contact h4 {
+  font-family: "Frank Ruhl Libre", sans-serif;
+  color: #fff;
+  font-size: 20px; }
+.footer-contact__subscribe {
+  position: relative; }
+  .footer-contact__subscribe input {
+    width: 100%; }
+  .footer-contact__subscribe button {
+    color: #fff;
+    padding: 0 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 14px;
+    line-height: 46px;
+    height: 46px;
+    font-size: 14px; }
+    .footer-contact__subscribe button:hover {
+      background-color: #fff;
+      color: #0b3d24; }
+  .footer-contact__subscribe label.error {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #868b98; }
+.footer-contact__copyright {
+  color: #868b98;
+  font-family: "Quicksand";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0;
+  font-size: 13px; }
+  .footer-contact__copyright a {
+    color: #868b98;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out; }
+    .footer-contact__copyright a:hover {
+      color: #fff; }
+.footer-contact__law a {
+  margin-right: 7px; }
+.footer-contact__info {
+  padding-bottom: 20px;
+  width: 100%; }
+  .footer-contact__info a {
+    color: #868b98;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-family: "Quicksand"; }
+    .footer-contact__info a:hover {
+      color: #fff; }
+  .footer-contact__info p {
+    margin-bottom: 0;
+    color: #868b98;
+    font-family: "Quicksand"; }
+
+@-webkit-keyframes fadeInUpSD {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 0); }
+  60% {
+    opacity: 0.6;
+    transform: scale3d(1, 0, 0); }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1); } }
+@keyframes fadeInUpSD {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 0); }
+  60% {
+    opacity: 0.6;
+    transform: scale3d(1, 0, 0); }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1); } }
+.slick-active .slide-content {
+  animation-name: fadeInUpSD;
+  animation-duration: 2s; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,96 @@
+﻿@using ProjectLibrary.Database
+@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using ProjectLibrary.Config
+@model TeamplateHotel.Models.DetailArticle
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+    Hotel detailHotel = CommentController.DetailHotel(Request.Cookies["LanguageID"].Value);
+    var tags = CommentController.GetArticleTags(Model.Article.ID);
+}
+@section css{
+
+    <link href="~/Content/css/news/news-detail.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+}
+<main>
+    <div class="container">
+        <div class="news-detail">
+            <div class="news-detail__share">
+                <div class="news-detail__date">
+                    <p>@Model.Article.Createdate</p>
+                </div>
+            </div>
+            <div class="news-detail__social">
+                <a href="@detailHotel.Facebook">
+                    <i class="fab fa-facebook-f facebook"></i>
+                </a>
+                <a href="@detailHotel.Twitter">
+                    <i class="fab fa-twitter twitter"></i>
+                </a>
+                <a href="http://printerest.com">
+                    <i class="fab fa-pinterest-p pinterest"></i>
+                </a>
+                <a href="http://tumblr.com"><i class="fab fa-tumblr tumblr"></i></a>
+            </div>
+        </div>
+        <div class="news-content">
+            <img src="@Model.Article.Image" alt="news detail image" />
+            @Html.Raw(Model.Article.Description)
+            @Html.Raw(Model.Article.Content)
+           
+        </div>
+        <div class="news-tag">
+            <p>
+
+                <strong>Tags:</strong>  
+                @if (tags.Count != 0)
+                {
+                    foreach (var tag in tags.Select((value, index) => new { Value = value, Index = index }))
+                    {
+                        var range = tag.Index != tags.Count - 1 ? ", " : string.Empty;
+
+                        if (TempData["MenuID"] == null)
+                        {
+                            <a href="/Tag/@menu.ID/@tag.Value.ID/@tag.Value.Alias">@tag.Value.TagName </a> @range
+                        }
+                        else
+                        {
+                            <a href="/Tag/@TempData["MenuID"]/@tag.Value.ID/@tag.Value.Alias">@tag.Value.TagName </a> @range
+
+                        }
+                    }
+                }
+            </p>
+        </div>
+        
+        <div class="news-related">
+            <h1>RELATED STORIES</h1>
+            <div class="row">
+                @foreach (var item in Model.Articles.Take(3))
+                {
+                <div class="col-12 col-md-4 padding">
+                    <div class="articles__item">
+                        <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                            <img src="@item.Image" alt="articles" />
+                        </a>
+                        <div class="articles__bg"></div>
+                        <div class="articles__desc">
+                            <div class="articles__group">
+                                <span>@item.Createdate</span>
+                                <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                                    <h2>
+                                        @item.Title
+                                    </h2>
+                                </a>
+                            </div>
+                            <a href="/@item.MenuAlias/@item.ID/@item.Alias"><button>Read more</button></a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>

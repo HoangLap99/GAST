@@ -1,0 +1,135 @@
+main {
+  margin: -40px 0 40px; }
+
+.parallax {
+  /* The image used */
+  background-image: url("/images/news/news-detail.jpeg");
+  min-height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.news-banner__group {
+  position: relative;
+  top: -70px; }
+.news-banner .parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000061; }
+.news-banner__title {
+  width: 100%;
+  padding: 0 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center; }
+  .news-banner__title h4 {
+    font-family: "Quicksand";
+    font-size: 16px;
+    text-transform: uppercase; }
+  .news-banner__title p {
+    padding-top: 15px;
+    font-family: "Frank Ruhl Libre";
+    font-size: 40px;
+    line-height: 60px; }
+
+.news-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px; }
+  .news-detail__date p {
+    font-size: 14px;
+    font-family: "Quicksand"; }
+    .news-detail__date p::before {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f073";
+      padding-right: 7px;
+      font-size: 16px; }
+  .news-detail__social svg {
+    height: 40px;
+    width: 40px !important;
+    padding: 10px;
+    border: 50%;
+    border-radius: 50%;
+    color: #fff;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    margin: 0 5px; }
+    .news-detail__social svg:hover {
+      transform: scale(1.1); }
+  .news-detail__social svg.facebook {
+    background-color: #1877f2; }
+  .news-detail__social svg.twitter {
+    background-color: #33acef; }
+  .news-detail__social svg.pinterest {
+    background-color: #cb382c; }
+  .news-detail__social svg.tumblr {
+    background-color: #2c4762; }
+
+.news-content p {
+  font-family: "Quicksand"; }
+.news-content h1 {
+  font-family: "Frank Ruhl Libre";
+  font-size: 36px;
+  line-height: 46px;
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 10px; }
+.news-content img {
+  width: 100%;
+  padding-bottom: 20px; }
+
+.news-tag strong {
+  font-size: 16px; }
+.news-tag a {
+  color: #474b56;
+  font-family: "Quicksand"; }
+  .news-tag a:hover {
+    color: #0b3d24; }
+
+.news-comment {
+  padding-top: 40px; }
+  .news-comment__item {
+    font-family: "Quicksand";
+    padding-bottom: 15px; }
+  .news-comment__item:last-child {
+    text-align: end; }
+  .news-comment h1 {
+    font-size: 26px;
+    line-height: 46px;
+    font-family: "Quicksand"; }
+  .news-comment textarea {
+    height: 100px; }
+  .news-comment button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    background-color: #0b3d24;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Quicksand"; }
+    .news-comment button:hover {
+      background-color: #000; }
+
+.news-related {
+  padding-top: 60px;
+  text-align: center; }
+  .news-related h1 {
+    font-size: 26px;
+    line-height: 46px;
+    font-family: "Quicksand";
+    padding-bottom: 30px; }
+  .news-related .padding {
+    padding: 10px 0; }
+
+/*# sourceMappingURL=news-detail.css.map */

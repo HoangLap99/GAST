@@ -1,0 +1,42 @@
+@import "../mixin.scss";
+
+.parallax {
+  /* The image used */
+  background-image: url("/images/gallery/gallery-13.jpg");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gallery-banner {
+  &__group {
+    position: relative;
+    top: -70px;
+  }
+  &__title {
+    @include center-block();
+    top: 60%;
+    color: #fff;
+    text-align: center;
+    p {
+      font-family: $font-content;
+    }
+  }
+}
+
+.gallery {
+  padding-bottom: 50px;
+  &__item {
+    overflow: hidden;
+    cursor: pointer;
+    img {
+      width: 100%;
+      @include transition();
+    }
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+}

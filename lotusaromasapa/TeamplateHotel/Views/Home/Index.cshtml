@@ -1,0 +1,455 @@
+﻿@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using TeamplateHotel.Models
+@using ProjectLibrary.Database
+@using ProjectLibrary.Config
+@{
+    ViewBag.HomePage = true;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    var lang = Request.Cookies["LanguageID"].Value;
+    Hotel detailHotel = CommentController.DetailHotel(Request.Cookies["LanguageID"].Value);
+    ShowObject article = CommentController.WellcomeArticle(Request.Cookies["LanguageID"].Value) ?? new ShowObject();
+    List<ShowObject> articleShowHots = CommentController.HotArticles(Request.Cookies["LanguageID"].Value);
+    List<ShowObject> CustomerArticle = CommentController.CustomerArticles(Request.Cookies["LanguageID"].Value);
+    List<ShowObject> roomShowHomes = CommentController.RoomShowHome(Request.Cookies["LanguageID"].Value);
+    List<Advertising> qc = CommentController.GetAdvertisings();
+    Menu menu = ViewBag.Menu ?? new Menu();
+
+    List<Slider> sliders = CommentController.GetListSlider(Request.Cookies["LanguageID"].Value, 0);
+    List<ShowObject> services = CommentController.ListServiceHome(Request.Cookies["LanguageID"].Value);
+    //List<Gallery> galleries = CommentController.Gallery();
+    List<RoomGallery> roomGalleries = CommentController.RoomGallery();
+    Menu menuroom = CommentController.GetMainMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.RoomRate);
+    Menu menunewarticles = CommentController.GetMainMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Article);
+    List<ShowObject> articleNews = CommentController.NewArticles(Request.Cookies["LanguageID"].Value);
+
+    Menu menurestaurant = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Service);
+    List<Service> restaurants = CommentController.GetServices(menurestaurant.ID).Take(2).ToList();
+
+    Menu menuBook = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Location);
+    List<Employee> employees = CommentController.employees(Request.Cookies["LanguageID"].Value);
+
+
+    Menu menuEvents = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Article);
+    List<Article> Articles = CommentController.Articles(menuEvents.ID);
+
+    Menu menuContact = CommentController.GetMainMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Contact);
+}
+
+<main>
+    <section class="book-room">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 book-room__padding">
+                    <img src="@article.Image" alt="home page" />
+                </div>
+                <div class="col-12 col-lg-6 book-room__padding">
+                    <div class="book-room__center">
+                        <h1>@article.Title</h1>
+                        <p>
+                            @Html.Raw(article.Description)
+                        </p>
+                        <a href="https://booking-guarantee.com/Home/SelectDate?hotelKey=IIT&lang=en&currency=USD"><button>BOOK A ROOM</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rooms">
+        <div class="rooms__title">
+            <h1>@menuroom.Title</h1>
+            <div class="rooms__line">
+                <div class="rooms__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">@menuroom.MetaDescription</p>
+        </div>
+
+        <div class="rooms__list">
+            <div class="container">
+                <div class="row no-gutter"
+                     style="box-shadow: 0 1px 8px 1px #2326331f">
+                    @foreach (var item in CommentController.GetRooms(menuroom.ID).Take(5))
+                    {
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="rooms__list-item">
+                                <img src="@item.Image" alt="home list image" />
+                                <div class="rooms__list-booking-center">
+                                    <div class="rooms__list-booking">
+                                        <a href="@menuroom.Alias/@item.ID/@item.Alias"><h1>@item.Title</h1></a>
+                                        <a href="@menuroom.Alias/@item.ID/@item.Alias"><h3>@item.RoomType</h3></a>
+                                        <p class="responsive over-text">
+                                            @Html.Raw(item.Description.Substring(0, 20))
+                                        </p>
+                                        <div class="rooms__list-price">
+                                            <div class="rooms__list-price-text">
+                                                <span>
+                                                    From:
+                                                    <span style=" font-size: 20px;font-weight: 600;color: #0b3d24;">$@item.Price</span>
+                                                    / Night
+                                                </span>
+                                            </div>
+                                            <div class="rooms__list-price-star">
+                                                @for (int i = 1; i < item.star; i++)
+                                                {
+                                                    <span class="fa fa-star checked"></span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <a href="@menuroom.Alias/@item.ID/@item.Alias"><button>CHECK AVAILABILITY</button></a>
+                                    </div>
+                                </div>
+                                <div class="rooms__list-name">@item.RoomType</div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="rooms__list-item">
+                            <img class="image-hide"
+                                 src="~/Content/images/home/home-06.jpg"
+                                 alt="home list image" />
+                            <div class="rooms__list-find">
+                                <div class="rooms__list-find-content">
+                                    <h3>You didn’t find anything that suits your needs?</h3>
+                                    <a href="/rooms">See all of our rooms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="restaurant">
+        <div class="restaurant__title">
+            <h1>@menurestaurant.Title</h1>
+            <div class="restaurant__line">
+                <div class="restaurant__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">
+                @menurestaurant.MetaDescription
+            </p>
+        </div>
+        @if (restaurants.Count > 0)
+        {
+            <div class="restaurant__item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 d-flex align-items-center">
+                            <div class="restaurant__item-block">
+                                <i class="fal fa-concierge-bell"></i>
+                                <h1>@restaurants[0].Title</h1>
+                                <p>
+                                    @Html.Raw(restaurants[0].Description)
+                                </p>
+                                <a href="/">SEE THE MENU</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <div class="restaurant__item-image">
+                                <img src="@restaurants[0].Image" alt="restaurant home" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (restaurants.Count > 1)
+        {
+            <div class="restaurant__item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <div class="restaurant__item-image">
+                                <img src="@restaurants[1].Image" alt="restaurant home" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex align-items-center">
+                            <div class="restaurant__item-block">
+                                <i class="fal fa-glass-cheers"
+                                   style="padding: 20px 0px 10px"></i>
+                                <h1>@restaurants[1].Title</h1>
+                                <p>
+                                    @Html.Raw(restaurants[1].Description)
+                                </p>
+                                <a href="/">SELECT A DRINK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <section class="experience">
+        <div class="parallax"></div>
+        <div class="experience__title">
+            <div class="experience__block">
+                <a href="https://player.vimeo.com/video/248352286?title=0&byline=0&portrait=0">
+                    <i class="fal fa-video"></i>
+                </a>
+
+                <h1>See the experience before you feel it</h1>
+                <!-- <iframe
+                  src="https://player.vimeo.com/video/248352286?title=0&byline=0&portrait=0"
+                  width="640"
+                  height="270"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="guest">
+        <div class="guest__title">
+            <h1>@menuBook.Title</h1>
+            <div class="guest__line">
+                <div class="guest__line-center"></div>
+            </div>
+            <p style="padding-top: 10px">
+                @menuBook.MetaDescription
+            </p>
+        </div>
+        <div class="guest__content">
+            <div class="guest-slide">
+                @foreach (var item in employees)
+                {
+                    <div class="guest__item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-lg-7">
+                                    <img src="@item.Image" alt="guest" />
+                                </div>
+                                <div class="col-12 col-lg-5 position-relative">
+                                    <div class="guest__block">
+                                        <h1>@item.FullName</h1>
+                                        <span>@item.Position</span>
+                                        <p>
+                                            @Html.Raw(item.Description)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+    <section class="event">
+        <div class="event__container">
+            <div class="event__title">
+                <h1>@menuEvents.Title</h1>
+                <div class="event__line">
+                    <div class="event__line-center"></div>
+                </div>
+                <p style="padding-top: 10px; text-align: center">
+                    @menuEvents.MetaDescription
+                </p>
+            </div>
+            <div class="event__list">
+                <div class="container">
+                    @if (Articles.Count > 0)
+                    {
+                        foreach (var item in Articles)
+                        {
+                            <div class="event__item">
+                                <div class="row">
+                                    <div class="col-12 col-lg-4">
+                                        <div class="event__small">
+                                            <a href="/@menuEvents.Alias/@item.ID/@item.Alias">
+                                                <img src="~/Content/images/home/home-11.jpg" alt="event" />
+                                            </a>
+                                            <div class="event__date">
+                                                <p>@item.Createdate</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-8 d-flex align-items-center">
+                                        <div class="event__large">
+                                            <a href="/@menuEvents.Alias/@item.ID/@item.Alias"><h1>@item.Title</h1></a>
+                                            <p class="event-responsive">
+                                                @Html.Raw(item.Description)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="event__line-event"></div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+            @*// <button>SEE OLDER EVENTS</button>*@
+        </div>
+    </section>
+    @if (articleNews.Count > 0)
+    {
+        <section class="articles">
+            <div class="articles__title">
+                <h1>@menunewarticles.Title</h1>
+                <div class="articles__line">
+                    <div class="articles__line-center"></div>
+                </div>
+                <p style="padding-top: 10px">@menunewarticles.MetaDescription</p>
+            </div>
+            <div class="container-fluid">
+                <div class="articles-slide">
+                    @foreach (var item in articleNews)
+                    {
+                        <div class="articles__item">
+                            <a href="/@menunewarticles.Alias/@item.ID/@item.Alias">
+                                <img src="@item.Image" alt="articles" />
+                            </a>
+                            <div class="articles__bg"></div>
+                            <div class="articles__desc">
+                                <div class="articles__group">
+                                    <span>@item.createdate</span>
+                                    <a href="/@menunewarticles.Alias/@item.ID/@item.Alias">
+                                        <h2>
+                                            @item.Title
+                                        </h2>
+                                    </a>
+                                </div>
+                                <a href="/@menunewarticles.Alias/@item.ID/@item.Alias"><button>Read more</button></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a href="@menunewarticles.Alias">   <button class="all-articles">SEE ALL ARTICLES</button></a>
+            </div>
+        </section>
+    }
+    <section class="contact">
+        <div class="contact__google">
+            <iframe src="@detailHotel.Location"
+                    width="100%"
+                    height="450"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"></iframe>
+        </div>
+        <div class="contact__us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 contact__us-item">
+                        <img src="@menuContact.Image" alt="contact" />
+                        <h1>@menuContact.Title</h1>
+                    </div>
+
+                    <div class="col-12 col-lg-6 contact__us-item">
+                        <div class="contact__us-center">
+                            <h2>
+                                @menuContact.MetaDescription
+                            </h2>
+                            <form method="post" action="/Contact/SubmitContact" id="homecontact">
+                                <div class="contact__group">
+                                    <div class="contact__input">
+                                        <input type="text"
+                                               name="FullName"
+                                               placeholder="Name"
+                                               required />
+                                    </div>
+                                    <div class="contact__input">
+                                        <input type="text"
+                                               name="Gender"
+                                               placeholder="Company"
+                                               required />
+                                    </div>
+                                </div>
+
+                                <div class="contact__group">
+                                    <div class="contact__input">
+                                        <input type="text"
+                                               name="Email"
+                                               placeholder="Email"
+                                               required />
+                                    </div>
+                                    <div class="contact__input">
+                                        <input type="text"
+                                               name="Tel"
+                                               placeholder="Phone"
+                                               required />
+                                    </div>
+                                </div>
+
+                                <div class="contact__group">
+                                    <textarea name="Request" placeholder="Your message up to 500 characters..."></textarea>
+                                </div>
+                                <button>SEND MESSAGE</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="book-a-room">
+        <img src="@menuroom.Image" alt="book a room" />
+        <div class="bookARoom">
+            <h1>@menuroom.MetaDescription</h1>
+            <a href="/@menuroom.Alias"><button>BOOK A ROOM</button></a>
+        </div>
+    </section>
+</main>
+
+<div id="wraploadding">
+    <div id="imgloadding"><img src="/Areas/Administrator/Content/img/ajax-loader.gif" alt="loading" /></div>
+</div>
+
+@section scripts{
+   
+    <script type="text/javascript">
+        $("#wraploadding").hide();
+        function LoadingSendEmail() {
+            $("#wraploadding").show();
+            $("#wraploadding").css("width", $(window).width());
+            $("#wraploadding").css("height", $(window).height());
+            $("#imgloadding ").css("top", ($(window).height() / 2) - 80);
+        }
+        //validate
+        $(document).ready(function () {
+            $("#homecontact").validate({
+            rules: {
+                FullName: "required",
+                Gender: "required",
+                Tel: {
+                    required: true,
+                    rangelength: [10, 11],
+                    number: true,
+                },
+                Email: {
+                    required: true,
+                    email: true,
+                },
+            },
+            messages: {
+                FullName: "Please enter Your name",
+                Gender: "Please enter Company name",
+                Tel: {
+                    required: "Please enter Your phone",
+                    rangelength: "Phone has 10 or 11 numbers",
+                    number: "Please enter numbers",
+                },
+                Email: {
+                    required: "Please enter Email",
+                    email: "Email not true",
+                },
+            },
+            submitHandler: function (form) {
+                form.submit();
+                LoadingSendEmail();
+            }
+        });
+        });
+    </script>
+}

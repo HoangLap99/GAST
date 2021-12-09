@@ -1,0 +1,88 @@
+﻿@using ProjectLibrary.Database
+@using TeamplateHotel.Handler
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Article>
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+}
+@section css{
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/news/news.css" rel="stylesheet" />
+    <style type="text/css">
+        .ul.pagination {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.pagination li {
+            display: inline;
+        }
+
+            ul.pagination li a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+            }
+
+                ul.pagination li a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                ul.pagination li a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+    </style>
+}
+
+<main>
+    <section class="news">
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <div class="news__item">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <div class="news__block">
+                                <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                                    <img src="@item.Image" alt="image news" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <div class="news__tag">@item.ArticleType</div>
+                            <div class="news__title">
+                                <a href="/@item.MenuAlias/@item.ID/@item.Alias">
+                                    @item.Title
+                                </a>
+                            </div>
+                            <div class="news__date">
+                                <p>@item.Createdate</p>
+                            </div>
+                            <div class="news__desc">
+                                @Html.Raw(item.Description)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news__line"></div>
+            }
+
+        </div>
+    </section>
+    <div id="container" style="margin-left: 20px">
+        <div class="pagination" style="justify-content:center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+        </div>
+</main>
+<style>
+    .pagination li:before {
+        content: "" !important;
+    }
+</style>

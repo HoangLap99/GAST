@@ -1,0 +1,104 @@
+@import "../mixin.scss";
+
+main {
+  margin: -40px 0 40px;
+}
+.parallax {
+  /* The image used */
+  background-image: url("/images/news/news-banner.jpg");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-banner {
+  &__group {
+    position: relative;
+    top: -70px;
+  }
+  &__title {
+    @include center-block();
+    color: #fff;
+    text-align: center;
+    p {
+      font-family: $font-content;
+    }
+  }
+}
+
+.news {
+  &__tag {
+    font-size: 16px;
+    font-family: $font-content;
+  }
+  &__block {
+    overflow: hidden;
+    img {
+      width: 100%;
+      padding-bottom: 15px;
+      @include transition();
+    }
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+  &__title {
+    font-size: 36px;
+    line-height: 45px;
+    a {
+      @include link();
+    }
+  }
+  &__date {
+    font-size: 12px;
+    font-family: $font-content;
+    @include flex-center-vertical();
+    p {
+      margin-bottom: 0;
+      &::before {
+        font-family: "Font Awesome 5 Pro";
+        content: "\f073";
+        font-size: 16px;
+        padding-right: 7px;
+      }
+    }
+  }
+  &__desc {
+    font-family: $font-content;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__line {
+    background-color: #8b8b8b4d;
+    height: 1px;
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+
+// style pagination
+.news-button {
+  margin-top: 20px;
+  text-align: center;
+  button {
+    border: 1px solid $main-color;
+    height: 40px;
+    width: 40px;
+    font-family: $font-content;
+    background-color: $main-color;
+    color: #fff;
+    @include transition();
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+  button.disabled {
+    background-color: #fff;
+    color: #000;
+  }
+}

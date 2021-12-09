@@ -1,0 +1,37 @@
+.parallax {
+  /* The image used */
+  background-image: url("/images/gallery/gallery-13.jpg");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.gallery-banner__group {
+  position: relative;
+  top: -70px; }
+.gallery-banner__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  color: #fff;
+  text-align: center; }
+  .gallery-banner__title p {
+    font-family: "Quicksand"; }
+
+.gallery {
+  padding-bottom: 50px; }
+  .gallery__item {
+    overflow: hidden;
+    cursor: pointer; }
+    .gallery__item img {
+      width: 100%;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out; }
+    .gallery__item:hover img {
+      transform: scale(1.05); }
+
+/*# sourceMappingURL=gallery.css.map */

@@ -1,0 +1,73 @@
+main {
+  margin-top: -70px; }
+
+.parallax {
+  /* The image used */
+  background-image: url("/images/contact/contact-01.jpeg");
+  min-height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.contact-banner__group {
+  position: relative;
+  top: -70px; }
+.contact-banner__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  text-align: center; }
+  .contact-banner__title p {
+    font-family: "Quicksand"; }
+
+.contact {
+  background-image: url(/images/contact/contact-02.jpeg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: scroll;
+  background-size: contain;
+  padding: 50px 0; }
+  .contact__form {
+    padding: 20px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0;
+    position: relative;
+    top: -95px; }
+    .contact__form h2 {
+      text-align: center;
+      font-size: 24px; }
+    .contact__form button {
+      color: #fff;
+      padding: 10px;
+      border: none;
+      background-color: #0b3d24;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: "Quicksand";
+      width: 100%; }
+      .contact__form button:hover {
+        background-color: #000; }
+  .contact__info h1 {
+    font-size: 28px; }
+  .contact__info a,
+  .contact__info p {
+    font-family: "Quicksand";
+    margin-bottom: 0;
+    color: #474b56; }
+  .contact__info-padding {
+    padding: 10px 15px; }
+
+@media (min-width: 768px) {
+  .contact__group {
+    display: block !important; }
+
+  .contact__input {
+    width: 100% !important; } }
+
+/*# sourceMappingURL=contact.css.map */

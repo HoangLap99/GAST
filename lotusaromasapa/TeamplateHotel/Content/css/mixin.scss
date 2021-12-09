@@ -1,0 +1,123 @@
+$main-color: #0b3d24;
+$second-color: #000;
+$text-color: #474b56;
+$font-title: "Frank Ruhl Libre";
+$font-content: "Quicksand";
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-column {
+  @include flex-center;
+  flex-direction: column;
+}
+
+@mixin flex-center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-horizon {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin center-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin block-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1a1a1a6b;
+}
+
+@mixin link {
+  color: $text-color;
+  &:hover {
+    color: $main-color;
+  }
+}
+@mixin button {
+  color: #fff;
+  padding: 10px;
+  border: none;
+  background-color: $main-color;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: $font-content;
+  &:hover {
+    background-color: $second-color;
+  }
+}
+@mixin button-shop {
+  color: $main-color;
+  padding: 10px 25px;
+  border: none;
+  background-color: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  line-height: 20px;
+  &:hover {
+    background-color: $main-color;
+  }
+}
+@mixin button-subscribe {
+  color: #fff;
+  padding: 0 10px;
+  border: none;
+  background-color: $main-color;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  font-size: 14px;
+  line-height: 46px;
+  &:hover {
+    background-color: #fff;
+    color: $main-color;
+  }
+}
+@mixin border-color {
+  border: 1px solid #8b8b8b4d;
+}
+@mixin transition() {
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+@mixin error-validate() {
+  color: red;
+  font-size: 13px;
+  font-style: italic;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}

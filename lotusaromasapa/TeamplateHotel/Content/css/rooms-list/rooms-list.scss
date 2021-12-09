@@ -1,0 +1,317 @@
+@import "../mixin.scss";
+
+ul.slick-dots {
+  display: none;
+}
+
+.service {
+  // for title ---------------------->
+  &__title {
+    margin-bottom: 70px;
+    text-align: center;
+    position: relative;
+    h1 {
+      font-size: 36px;
+      line-height: 46px;
+    }
+    p {
+      font-size: 12px;
+      font-family: $font-content;
+    }
+  }
+  &__line {
+    @include center-block();
+    margin: 10px 0;
+    height: 1px;
+    width: 100px;
+    background-color: #d7dadd;
+  }
+
+  // for content ---------------------->
+  &__hook-01,
+  &__hook-02 {
+    background-position: center center;
+    background-size: cover;
+    padding: 30px;
+  }
+  &__hook-01 {
+    background-image: url(/images/room/room-01.jpg);
+  }
+  &__hook-02 {
+    background-image: url(/images/room/room-02.jpg);
+  }
+  &__block {
+    background-color: #fff;
+  }
+  &__block-center {
+    padding: 20px;
+  }
+  &__block-title {
+    font-size: 28px;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  &__block-desc {
+    font-family: $font-content;
+    ul {
+      list-style: inside;
+    }
+  }
+
+  // for group icon ---------------------->
+  &__icon {
+    padding: 60px 0 45px;
+  }
+  &__icon-item {
+    @include flex-center-column();
+    text-align: center;
+    color: $main-color;
+    svg {
+      font-size: 36px;
+    }
+  }
+
+  // for reserve ---------------------->
+  &__reserve {
+    background-color: #f7f7f7;
+    padding: 60px 15px;
+    text-align: center;
+    .header-booking {
+      height: 145px;
+    }
+  }
+  &__reserve-title {
+    font-size: 36px;
+    line-height: 46px;
+    color: $main-color;
+  }
+  &__reserve-block {
+    @include flex-center-horizon();
+  }
+  &__reserve-line {
+    height: 1px;
+    width: 100px;
+    background-color: $main-color;
+  }
+  .header-booking {
+    margin: 40px 0;
+  }
+}
+.header-booking__item span::after {
+  top: -4px;
+}
+.header-booking__select::after {
+  top: 10px;
+}
+// style for rooms details ------------------- >
+.parallax {
+  /* The image used */
+  background-image: url("/images/room/room-07.jpg");
+  min-height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rooms-banner {
+  &__group {
+    position: relative;
+    top: -70px;
+  }
+  &__title {
+    @include center-block();
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    p {
+      font-family: $font-content;
+    }
+  }
+  &__bg {
+    @include block-bg();
+  }
+}
+
+.rooms-detail {
+  margin-top: -45px;
+  border-bottom: 1px solid #d7dadd;
+  &__item {
+    font-family: $font-content;
+    text-align: center;
+    h2 {
+      font-size: 12px;
+    }
+    p {
+      font-size: 14px;
+      color: #5c6476;
+    }
+  }
+  &__block {
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    p {
+      margin-bottom: 0;
+      font-family: $font-content;
+      color: #5c6476;
+    }
+    button {
+      @include button();
+    }
+    h2 {
+      font-size: 26px;
+    }
+  }
+  &__block-item {
+    background-color: #fff;
+    padding: 10px 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.rooms-desc {
+  font-family: $font-content;
+  text-align: center;
+  font-size: 20px;
+  max-width: 800px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.rooms-slide {
+  max-width: 1300px;
+  margin: auto;
+  padding-bottom: 30px;
+  img {
+    width: 100%;
+  }
+  .slick-dots li button:before {
+    content: "";
+  }
+  .slick-dots {
+    bottom: 25px;
+  }
+  .slick-dots li {
+    width: 90px;
+  }
+  .slick-dots li.slick-active button {
+    background-color: #fff;
+    height: 3px;
+    width: 100%;
+  }
+  .slick-dots li button {
+    background-color: #ffffff40;
+    height: 2px;
+    width: 100%;
+    padding: 0;
+  }
+  li.slick-active {
+    background-color: #fff;
+    height: 1px;
+  }
+}
+
+.rooms-view {
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 28px;
+    padding-top: 15px;
+  }
+  ul {
+    font-family: $font-content;
+  }
+  ul li {
+    padding-bottom: 10px;
+    &::before {
+      content: "✢";
+      padding-right: 5px;
+    }
+  }
+  .col-md-6 {
+    @include flex-center();
+  }
+}
+
+.spa {
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 28px;
+    padding-top: 15px;
+  }
+
+  &__icons-item {
+    text-align: center;
+    @include flex-center-column();
+    width: 25%;
+    float: left;
+    padding: 15px 0;
+    svg {
+      font-size: 40px;
+      color: $main-color;
+    }
+    span {
+      font-size: 13px;
+      color: $main-color;
+    }
+  }
+  p {
+    font-family: $font-content;
+  }
+  .col-md-6 {
+    @include flex-center();
+  }
+}
+
+.offers {
+  &__title {
+    text-align: center;
+    padding: 50px 0 30px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  span {
+    font-family: $font-content;
+    font-size: 12px;
+  }
+}
+.offers-slide {
+  background-image: url("/images/room/room-13.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 30px 10px;
+  &__item img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  span {
+    font-size: 9px;
+    font-family: $font-content;
+    color: #8d929d;
+  }
+  p,
+  ul li {
+    font-size: 11px;
+    font-family: $font-content;
+    line-height: 16px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  &__desc {
+    background-color: #fff;
+    padding: 20px;
+  }
+}

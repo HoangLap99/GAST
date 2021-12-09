@@ -1,0 +1,121 @@
+@media (min-width: 414px) {
+  .rooms__list-booking {
+    padding: 10px; } }
+@media (min-width: 425px) {
+  .offers-slide {
+    padding: 30px 20px; } }
+@media (min-width: 720px) {
+  .header-booking__group .header-booking__item {
+    width: 20%; }
+
+  .header-booking__item {
+    width: 20%; }
+
+  .offers-slide {
+    padding: 30px; } }
+@media (min-width: 768px) {
+  .footer-contact__info {
+    width: 33.333333%;
+    float: left; }
+
+  .footer-contact__copyright {
+    justify-content: space-between;
+    flex-direction: inherit; }
+
+  .footer-social__logoSocial {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+
+  .book-room h1 {
+    font-size: 70px; }
+
+  .contact__group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+
+  .contact__input {
+    width: 49%; }
+
+  .rooms-view h1,
+  .spa h1 {
+    padding-top: 0; }
+
+  .spa-order {
+    order: 2; }
+
+  .offers-slide h1 {
+    font-size: 24px; }
+
+  .offers-slide span {
+    font-size: 12px; }
+
+  .offers-slide p,
+  .offers-slide ul li {
+    font-size: 14px;
+    line-height: 20px; }
+
+  .service__reserve .header-booking {
+    height: 46px; }
+
+  .meeting-count__01,
+  .meeting-count__02 {
+    border-bottom-width: 0; }
+
+  .meeting-count__02 {
+    border-right-width: 1px; }
+
+  .meeting-service__01, .meeting-service__02, .meeting-service__03, .meeting-service__04, .meeting-service__05, .meeting-service__06 {
+    border-right-width: 1px; } }
+@media (min-width: 1024px) {
+  .book-a-room img {
+    position: absolute;
+    top: 30px; }
+
+  .service__block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative; }
+
+  .service__hook-01,
+  .service__hook-02 {
+    height: 450px; }
+
+  .rooms-detail__block-item {
+    position: absolute; }
+
+  .offers-slide__desc {
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%); } }
+@media (min-width: 1200px) {
+  .header__logo {
+    padding-left: 50px; }
+
+  #main-menu {
+    padding-bottom: 0;
+    padding-right: 50px; }
+
+  .sm-clean a .sub-arrow {
+    background-color: transparent; }
+
+  .header-booking__item span::after {
+    top: -4px; }
+
+  .header-booking__select::after {
+    top: 11px; }
+
+  .sm-clean a:hover {
+    color: #0b3d24 !important; }
+
+  span.sub-arrow {
+    display: none; } }
+@media (max-width: 1199px) {
+  #main-menu a {
+    color: #474b56 !important; } }
+
+/*# sourceMappingURL=responsive.css.map */

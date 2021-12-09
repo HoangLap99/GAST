@@ -1,0 +1,88 @@
+main {
+  margin: -40px 0 40px; }
+
+.parallax {
+  /* The image used */
+  background-image: url("/images/news/news-banner.jpg");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.news-banner__group {
+  position: relative;
+  top: -70px; }
+.news-banner__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center; }
+  .news-banner__title p {
+    font-family: "Quicksand"; }
+
+.news__tag {
+  font-size: 16px;
+  font-family: "Quicksand"; }
+.news__block {
+  overflow: hidden; }
+  .news__block img {
+    width: 100%;
+    padding-bottom: 15px;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out; }
+  .news__block:hover img {
+    transform: scale(1.05); }
+.news__title {
+  font-size: 36px;
+  line-height: 45px; }
+  .news__title a {
+    color: #474b56; }
+    .news__title a:hover {
+      color: #0b3d24; }
+.news__date {
+  font-size: 12px;
+  font-family: "Quicksand";
+  display: flex;
+  align-items: center; }
+  .news__date p {
+    margin-bottom: 0; }
+    .news__date p::before {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f073";
+      font-size: 16px;
+      padding-right: 7px; }
+.news__desc {
+  font-family: "Quicksand"; }
+  .news__desc p {
+    margin-bottom: 0; }
+.news__line {
+  background-color: #8b8b8b4d;
+  height: 1px;
+  width: 100%;
+  margin: 20px 0; }
+
+.news-button {
+  margin-top: 20px;
+  text-align: center; }
+  .news-button button {
+    border: 1px solid #0b3d24;
+    height: 40px;
+    width: 40px;
+    font-family: "Quicksand";
+    background-color: #0b3d24;
+    color: #fff;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out; }
+    .news-button button:hover {
+      background-color: #fff;
+      color: #000; }
+  .news-button button.disabled {
+    background-color: #fff;
+    color: #000; }
+
+/*# sourceMappingURL=news.css.map */

@@ -1,0 +1,107 @@
+﻿@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using TeamplateHotel.Models
+@using ProjectLibrary.Database
+@using ProjectLibrary.Config
+@model TeamplateHotel.Models.DetailRoom
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+    var lang = Request.Cookies["LanguageID"].Value;
+
+    Menu menuBook = CommentController.GetSecondMenus(Request.Cookies["LanguageID"].Value).FirstOrDefault(a => a.Type == SystemMenuType.Location);
+    List<Article> Articles = CommentController.Articles(menuBook.ID);
+}
+@section css{
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/rooms-list/rooms-list.css" rel="stylesheet" />
+}
+<main>
+    <section class="rooms-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    <div class="row">
+                        <div class="col-6 col-sm-3">
+                            <div class="rooms-detail__item">
+                                <h2>BEDS</h2>
+                                <p>Two</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="rooms-detail__item">
+                                <h2>ROOMS SIZE</h2>
+                                <p>378 sq ft / 38 sq m</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="rooms-detail__item">
+                                <h2>OCCUPANCY</h2>
+                                <p>2 adults (2 children)</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="rooms-detail__item">
+                                <h2>VIEW</h2>
+                                <p>Lake View</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 rooms-detail__block">
+                    <div class="rooms-detail__block-item">
+                        <p>PRICE PER NIGHT</p>
+                        <h2>@Model.Room.Price USD</h2>
+                        <a href="https://booking-guarantee.com/Home/SelectDate?hotelKey=IIT&lang=en&currency=USD"><button>BOOK NOW</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rooms-desc">
+        <div class="container">
+            @Html.Raw(Model.Room.Description)
+
+        </div>
+    </section>
+    <section class="rooms-slide">
+        @foreach (var item in Model.RoomGalleries)
+        {
+            <img src="@item.ImageLarge" alt="rooms detail image" />
+        }
+    </section>
+    @Html.Raw(Model.Room.Content)
+    <section class="offers">
+        <div class="offers__title">
+            <h1>@menuBook.Title</h1>
+            <span>@menuBook.MetaDescription</span>
+        </div>
+        <div class="offers-slide">
+            @foreach (var item in Articles)
+            {
+            <div class="offers-slide__item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <img src="@item.Image"
+                                 alt="rooms detail image" />
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="offers-slide__desc">
+                                <h1>@item.Title</h1>
+                                <span>@Html.Raw(item.Description)</span>
+                               @Html.Raw(item.Content)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+}

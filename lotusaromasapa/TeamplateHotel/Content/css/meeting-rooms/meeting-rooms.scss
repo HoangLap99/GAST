@@ -1,0 +1,160 @@
+@import "../mixin.scss";
+.parallax {
+  /* The image used */
+  background-image: url("/images/home/home-11.jpg");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.meeting-banner {
+  &__group {
+    position: relative;
+    top: -70px;
+  }
+  &__title {
+    @include center-block();
+    color: #fff;
+    text-align: center;
+  }
+  .meeting-bg {
+    @include block-bg();
+  }
+}
+
+.meeting-count {
+  padding: 40px 0;
+
+  &__title {
+    text-align: center;
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 12px;
+      font-family: $font-content;
+      padding-top: 10px;
+    }
+  }
+  &__block {
+    box-shadow: 0 0 30px 0 #00000014;
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 34px;
+      font-family: $font-content;
+      color: $main-color;
+      margin-bottom: 0;
+      padding: 15px 0;
+    }
+    span {
+      font-size: 16px;
+      font-family: $font-content;
+    }
+  }
+  &__01,
+  &__02,
+  &__03,
+  &__04 {
+    border: #dadddf;
+    border-width: 0;
+    border-style: solid;
+    padding: 20px;
+  }
+  &__01 {
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+  }
+  &__02 {
+    border-bottom-width: 1px;
+  }
+  &__03 {
+    border-right-width: 1px;
+  }
+}
+
+.meeting-event {
+  &__title {
+    text-align: center;
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 12px;
+      font-family: $font-content;
+    }
+  }
+}
+.meeting-slide {
+  img {
+    width: 100%;
+  }
+}
+
+.meeting-service {
+  padding: 50px 0;
+  &__block {
+    box-shadow: 0 0 30px 0 #00000014;
+  }
+  svg {
+    font-size: 64px;
+    color: $main-color;
+    margin: 10px 0;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  p {
+    font-family: $font-content;
+  }
+  &__01,
+  &__02,
+  &__03,
+  &__04,
+  &__05,
+  &__06 {
+    border: #dadddf;
+    border-width: 0;
+    border-style: solid;
+    padding: 20px;
+    border-bottom-width: 1px;
+  }
+}
+
+.meeting-function {
+  &__title {
+    text-align: center;
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      font-family: $font-content;
+    }
+  }
+  &__item {
+    h1 {
+      font-size: 28px;
+      color: unset;
+    }
+    td.no-border-top {
+      border-top: none;
+    }
+  }
+  &__item-title {
+    font-family: $font-content;
+    font-weight: 600;
+    color: unset;
+    margin-bottom: 0;
+  }
+  &__item-content {
+    font-family: $font-content;
+    color: unset;
+    margin-bottom: 0;
+  }
+}
+.contact__form {
+  top: -23px;
+}

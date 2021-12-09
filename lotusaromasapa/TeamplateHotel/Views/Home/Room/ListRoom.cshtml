@@ -1,0 +1,187 @@
+﻿@using TeamplateHotel.Controllers
+@using TeamplateHotel.Handler
+@using TeamplateHotel.Models
+@using ProjectLibrary.Database
+@using ProjectLibrary.Config
+@model IEnumerable<Room>
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Menu menu = ViewBag.Menu ?? new Menu();
+    List<Article> article = CommentController.Articles(menu.ID);
+    var lang = Request.Cookies["LanguageID"].Value;
+
+}
+@section css{
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/rooms-list/rooms-list.css" rel="stylesheet" />
+}
+
+<main>
+    <section class="service">
+        <div class="service__title">
+            <h1>@menu.Title</h1>
+            <div class="service__line"></div>
+            <p>@menu.MetaDescription</p>
+        </div>
+        <div class="service__content">
+            <div class="container">
+                <div class="row no-gutter">
+                    @foreach (var item in article)
+                    {
+                        <div class="col-12 col-lg-6">
+                            <div class="service__hook-01">
+                                <div class="service__block">
+                                    <div class="service__block-center">
+                                        <div class="service__block-title">@item.Title</div>
+                                        <div class="service__block-desc">
+                                            @Html.Raw(item.Description)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="service__icon">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="service__icon-item">
+                            <i class="fal fa-fireplace"></i>
+                            <p>Cosy Rooms</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="service__icon-item">
+                            <i class="fal fa-fireplace"></i>
+                            <p>Exceptional Food</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="service__icon-item">
+                            <i class="fal fa-dice"></i>
+                            <p>Game Rooms</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="service__icon-item">
+                            <i class="fal fa-glass-cheers"></i>
+                            <p>Bar Drinks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="service__rooms">
+            <div class="rooms__list">
+                <div class="container-fluid">
+                    <div class="row no-gutter"
+                         style="box-shadow: 0 1px 8px 1px #2326331f">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="rooms__list-item">
+                                    <img src="@item.Image" alt="home list image" />
+                                    <div class="rooms__list-booking-center">
+                                        <div class="rooms__list-booking">
+                                            <a href="@item.MenuAlias/@item.ID/@item.Alias"><h1>@item.Title</h1></a>
+                                            <a href="@item.MenuAlias/@item.ID/@item.Alias"><h3>@item.RoomType</h3></a>
+                                            <p class="responsive over-text">
+                                                @Html.Raw(item.Description.Substring(0, 20))
+                                            </p>
+                                            <div class="rooms__list-price">
+                                                <div class="rooms__list-price-text">
+                                                    <span>
+                                                        From:
+                                                        <span style=" font-size: 20px;font-weight: 600;color: #0b3d24;">$@item.Price</span>
+                                                        / Night
+                                                    </span>
+                                                </div>
+                                                <div class="rooms__list-price-star">
+                                                    @for (int i = 1; i < item.star; i++)
+                                                    {
+                                                        <span class="fa fa-star checked"></span>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <a href="@item.MenuAlias/@item.ID/@item.Alias"><button>CHECK AVAILABILITY</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="rooms__list-name">@item.RoomType</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="service__reserve">
+            <div class="service__reserve-title">Reserve Room</div>
+            <div class="service__reserve-block">
+                <div class="service__reserve-line"></div>
+            </div>
+            <form class="header-booking" action="https://booking-guarantee.com/Home/SelectRoom?" methods="Get" id="formCheckRoom" target="blank" name="idForm">
+                <input name="hotelKey" type="hidden" value="ABS">
+                <input name="hotelCode" type="hidden" value="ABS">
+                <input name="lang" type="hidden" value="en">
+                <input name="currency" type="hidden" value="USD">
+                <div class="header-booking__item">
+                    <span>
+                        <input type="text"
+                               autocomplete="off"
+                               name="fromDate"
+                               value=""
+                               id="current-date"
+                               placeholder="Check-in" />
+                    </span>
+                </div>
+                <div class="header-booking__item">
+                    <span>
+                        <input type="text"
+                               autocomplete="off"
+                               name="toDate"
+                               value=""
+                               id="current-date"
+                               placeholder="Check-out" />
+                    </span>
+                </div>
+                <div class="header-booking__item">
+                    <div class="header-booking__select">
+                        <select name="adults">
+                            <option value="0">Adults</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="header-booking__item">
+                    <div class="header-booking__select">
+                        <select name="child">
+                            <option value="0">Children</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="header-booking__item">
+                    <button id="cmdCheckHotel" type="submit">CHECK AVAILABILITY</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+@section scripts{
+
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/validate.js"></script>
+    <script src="~/Content/js/slide.js"></script>
+
+}

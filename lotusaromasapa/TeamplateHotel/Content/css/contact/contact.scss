@@ -1,0 +1,76 @@
+@import "../mixin.scss";
+
+main {
+  margin-top: -70px;
+}
+.parallax {
+  /* The image used */
+  background-image: url("/images/contact/contact-01.jpeg");
+  min-height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-banner {
+  &__group {
+    position: relative;
+    top: -70px;
+  }
+  &__title {
+    @include center-block();
+    color: #000;
+    text-align: center;
+    p {
+      font-family: $font-content;
+    }
+  }
+}
+
+.contact {
+  background-image: url(/images/contact/contact-02.jpeg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: scroll;
+  background-size: contain;
+  padding: 50px 0;
+  &__form {
+    padding: 20px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0;
+    h2 {
+      text-align: center;
+      font-size: 24px;
+    }
+    button {
+      @include button();
+      width: 100%;
+    }
+    position: relative;
+    top: -95px;
+  }
+  &__info {
+    h1 {
+      font-size: 28px;
+    }
+    a,
+    p {
+      font-family: $font-content;
+      margin-bottom: 0;
+      color: $text-color;
+    }
+  }
+  &__info-padding {
+    padding: 10px 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact__group {
+    display: block !important;
+  }
+  .contact__input {
+    width: 100% !important;
+  }
+}
